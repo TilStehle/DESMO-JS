@@ -1,7 +1,10 @@
 package desmoj.core.simulator;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import org.apache.commons.collections.list.TreeList;
+import java.util.List;
+
+//import org.apache.commons.collections.list.TreeList; [AC_COLLECTION]
 import desmoj.core.exception.SimAbortedException;
 import desmoj.core.report.ErrorMessage;
 
@@ -48,7 +51,8 @@ public class EventTreeList extends EventList {
 	/**
 	 * The tree list container used to store the event-notes.
 	 */
-	TreeList eTreeList; // The tree list containing all Event notes.
+	//TreeList eTreeList; // The tree list containing all Event notes. //[AC_COLLECTION]
+	List eTreeList;
 
 	/**
 	 * Constructs an empty event-list.
@@ -56,7 +60,8 @@ public class EventTreeList extends EventList {
 	EventTreeList() {
 		
 		// create event-list
-		eTreeList = new TreeList();
+		//eTreeList = new TreeList(); //[AC_COLLECTION]
+		eTreeList = new ArrayList<>();
 
 	}
 	

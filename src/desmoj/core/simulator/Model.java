@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.commons.collections.map.ReferenceMap;
+//import org.apache.commons.collections.map.ReferenceMap; //[AC_COLLECTION]
+import java.util.Map;
+import java.util.HashMap;
 
 import co.paralleluniverse.fibers.SuspendExecution;
 import desmoj.core.report.ModelReporter;
@@ -56,7 +58,8 @@ public abstract class Model extends Reportable {
     /**
      * The map with all entities and their identifiers.
      */
-    private ReferenceMap _entityMap;
+    //private ReferenceMap _entityMap; //[AC_COLLECTION]
+    private Map _entityMap;
     
     /**
      * True if this is the main model (not a submodel to another model), false 
@@ -118,7 +121,8 @@ public abstract class Model extends Reportable {
         
         _numberOfEntitiesCreated = 0L;
         
-        _entityMap = new ReferenceMap(ReferenceMap.HARD, ReferenceMap.WEAK);
+        //_entityMap = new ReferenceMap(ReferenceMap.HARD, ReferenceMap.WEAK); //[AC_COLLECTION]
+        _entityMap = new HashMap<>();
     }
 
     /**
