@@ -6,7 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
-import co.paralleluniverse.fibers.SuspendExecution;
+//import co.paralleluniverse.fibers.SuspendExecution; //[PROCESS]
 
 /**
  * The scheduler is the main element controlling the run of a simulation. It
@@ -72,7 +72,7 @@ public class Scheduler extends NamedObject {
 	/**
 	 * Contains the current active SimProcess.
 	 */
-	private SimProcess _currentProcess;
+	//private SimProcess _currentProcess; //[PROCESS]
 
 	/**
 	 * Contains the current active Event.
@@ -280,11 +280,11 @@ public class Scheduler extends NamedObject {
 	 * 
 	 * @return SimProcess : The currently active SimProcess or <code>null</code>
 	 */
-	protected SimProcess getCurrentSimProcess() {
+	/*protected SimProcess getCurrentSimProcess() {
 
 		return _currentProcess;
 
-	}
+	}*/ //[PROCESS]
 
 	/**
 	 * Returns the current execution Speed Rate.
@@ -328,7 +328,7 @@ public class Scheduler extends NamedObject {
 	 *            EventNote - The event-note of the Schedulable preempting
 	 *            the current SimProcess
 	 */
-	void preemptSimProcess(EventNote preemptNote) throws SuspendExecution {
+	/*void preemptSimProcess(EventNote preemptNote) throws SuspendExecution {
 
 		if (_currentProcess == null) {
 			myExperiment.sendWarning("Can't preempt current SimProcess! "
@@ -349,7 +349,7 @@ public class Scheduler extends NamedObject {
 		// ..to be next after preempting SimPr.
         _currentProcess.passivate(); // and set current to sleep until then
 
-	}
+	}*/ //[PROCESS]
 
 	/**
 	 * Processes the next event-note on the event-list. Returns <code>true</code>
@@ -360,7 +360,7 @@ public class Scheduler extends NamedObject {
 	 *         processed correctly, <code>false</code> if not
 	 */
 	@SuppressWarnings("unchecked")
-    protected boolean processNextEventNote() throws SuspendExecution {
+    protected boolean processNextEventNote() /*throws SuspendExecution //[PROCESS] */ {
 	    EventNote _currentNote;
 	    
 		// check if there still are Event notes to be processed
@@ -531,7 +531,7 @@ public class Scheduler extends NamedObject {
 		_currentEntity2 = _currentNote.getEntity2();
 		_currentEntity3 = _currentNote.getEntity3();
 		
-		_currentProcess = null;
+		//_currentProcess = null; //[PROCESS]
 		_currentSchedulable = null;
 		_currentSource = _currentNote.getSource();
 
@@ -540,9 +540,9 @@ public class Scheduler extends NamedObject {
 			_currentModel = _currentEntity1.getModel();
 			_currentSchedulable = _currentEntity1;
 			_currentEntity1.removeEventNote(_currentNote);
-			if (_currentEntity1 instanceof SimProcess) { // a real SimProcess
+			/*if (_currentEntity1 instanceof SimProcess) { // a real SimProcess
 				_currentProcess = (SimProcess) _currentEntity1;
-			}
+			}*/ //[PROCESS]
 		}
         if (_currentEntity2 != null) 
         {
@@ -556,7 +556,7 @@ public class Scheduler extends NamedObject {
 		// determine Event resp. external event
 		_currentEvent = _currentNote.getEvent();
 		
-		if (_currentEvent != null && _currentProcess == null) {
+		if (_currentEvent != null /*&& _currentProcess == null //[PROCESS]*/ ) {
 
 			_currentEvent.removeEventNote(_currentNote);
 
@@ -607,7 +607,7 @@ public class Scheduler extends NamedObject {
 			// The current SimProcess to hand control over to may have terminated
 			// already
 			// so the scheduler must not start it
-			if (!_currentProcess.isTerminated()) {
+			/*if (!_currentProcess.isTerminated()) {
 			    
 			    // Inform process about source of activation
 			    _currentProcess.setActivatedBy(_currentSource);
@@ -652,7 +652,7 @@ public class Scheduler extends NamedObject {
 										+ "already terminated.",
 								"Be sure to check the SimProcess' status before resuming." +
 							    " Use method isTerminated() to check the current status");
-			}
+			}*/ //[PROCESS]
 
 		}
 		if (_executionSpeedRate > 0) {
@@ -687,7 +687,7 @@ public class Scheduler extends NamedObject {
 				}
 			} else {
 				// process-oriented
-
+				/*
 				long deadLine = _currentProcess.getRealTimeConstraint();
 				// the deadLine of this SimProcess
 
@@ -708,6 +708,7 @@ public class Scheduler extends NamedObject {
 											+ " nanoseconds.",
 									"Check if the deadline can be met.");
 				}
+				*/ //[PROCESS]
 			}
 
 		}
@@ -820,7 +821,7 @@ public class Scheduler extends NamedObject {
 	 * @param who
 	 *            Entity : The Entity to be scheduled
 	 */
-	protected void reScheduleWithPreempt(Schedulable who) throws SuspendExecution {
+	protected void reScheduleWithPreempt(Schedulable who) /*throws SuspendExecution //[PROCESS]*/  {
 
 		if (who == null) {
 			myExperiment
@@ -859,7 +860,7 @@ public class Scheduler extends NamedObject {
 		for (EventNote note : notes) {
     		evList.remove(note);
     		note.setTime(presentTime());
-			if (_currentProcess == null) { // currently Event -> no preemption
+			/*if (_currentProcess == null) { // currently Event -> no preemption
 				// inserted as first in the event-list with the current time as
 				// activation
 				evList.insertAsFirst(note);
@@ -867,7 +868,8 @@ public class Scheduler extends NamedObject {
 			} else { // currently SimProcess -> preempt!
 
 				preemptSimProcess(note);
-			}   
+			}   */
+    		evList.insertAsFirst(note); //[PROCESS]
 		}
 	}
 	
@@ -1113,7 +1115,7 @@ public class Scheduler extends NamedObject {
             return; // if no Entity it must be ExternalEvent
         }
 
-        if (!(who instanceof SimProcess) && (what == null)) {
+        /*if (!(who instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who, "
@@ -1121,7 +1123,7 @@ public class Scheduler extends NamedObject {
                     "The Entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
         if(what != null)
         {
@@ -1142,11 +1144,12 @@ public class Scheduler extends NamedObject {
         
         // determine priority
         int priority = 0;
-        if (what == null && who instanceof SimProcess) {
+        /*if (what == null && who instanceof SimProcess) {
             priority = ((SimProcess) who).getSchedulingPriority();
         } else if (what != null) {
             priority = what.getSchedulingPriority();
-        } 
+        } */
+        priority = what.getSchedulingPriority(); //[PROCESS]
 
         EventNote note = new EventNote(who, null, null, what, time, priority, _currentSchedulable);
 
@@ -1194,7 +1197,7 @@ public class Scheduler extends NamedObject {
             return; // if no Entity it must be ExternalEvent
         }
 
-        if (!(who instanceof SimProcess) && (what == null)) {
+        /*if (!(who instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who, "
@@ -1202,7 +1205,7 @@ public class Scheduler extends NamedObject {
                     "The Entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
         if (TimeInstant.isBefore(when, this.presentTime())) {
             myExperiment
@@ -1237,11 +1240,12 @@ public class Scheduler extends NamedObject {
         
         // determine priority
         int priority = 0;
-        if (what == null && who instanceof SimProcess) {
+        /*if (what == null && who instanceof SimProcess) {
             priority = ((SimProcess) who).getSchedulingPriority();
         } else if (what != null) {
             priority = what.getSchedulingPriority();
-        }            
+        } */
+        priority = what.getSchedulingPriority(); //[PROCESS]
 
         EventNote note = new EventNote(who, null, null, what, when, priority, _currentSchedulable);
 
@@ -1252,7 +1256,7 @@ public class Scheduler extends NamedObject {
     /**
      * Schedules the event to happen immediately.
      */
-    protected void scheduleWithPreempt(Entity who, EventAbstract what) throws SuspendExecution {
+    protected void scheduleWithPreempt(Entity who, EventAbstract what) /*throws SuspendExecution //[PROCESS]*/  {
 
         if ((who == null) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
@@ -1277,7 +1281,7 @@ public class Scheduler extends NamedObject {
             return; // if no Entity it must be ExternalEvent
         }
 
-        if (!(who instanceof SimProcess) && (what == null)) {
+        /*if (!(who instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who, "
@@ -1285,7 +1289,7 @@ public class Scheduler extends NamedObject {
                     "The Entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/
         
         if(what != null)
         {
@@ -1303,21 +1307,23 @@ public class Scheduler extends NamedObject {
         
         // determine priority
         int priority = 0;
-        if (what == null && who instanceof SimProcess) {
+        /*if (what == null && who instanceof SimProcess) {
             priority = ((SimProcess) who).getSchedulingPriority();
         } else if (what != null) {
             priority = what.getSchedulingPriority();
-        }            
+        } */
+        priority = what.getSchedulingPriority(); //[PROCESS]
 
         EventNote note = new EventNote(who, null, null, what, presentTime(), priority, _currentSchedulable);
 
-        if (_currentProcess == null) { // currently Event -> no preemption
+        /*if (_currentProcess == null) { // currently Event -> no preemption
             // inserted as first in the event-list with the current time as
             // activation
             evList.insertAsFirst(note);
         } else { // currently SimProcess -> preempt!
             preemptSimProcess(note);
-        }
+        }*/
+        evList.insertAsFirst(note); //[PROCESS]
     }
     
     /**
@@ -1359,7 +1365,7 @@ public class Scheduler extends NamedObject {
             return; // no real parameters here anyway
         }
     
-        if (!(who1 instanceof SimProcess) && (what == null)) {
+        /*if (!(who1 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, "
@@ -1367,9 +1373,9 @@ public class Scheduler extends NamedObject {
                     "The first entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
-        if (!(who2 instanceof SimProcess) && (what == null)) {
+        /*if (!(who2 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, "
@@ -1377,7 +1383,7 @@ public class Scheduler extends NamedObject {
                     "The second entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
         TimeInstant time = TimeOperations.add(presentTime(), dt);
         // set time for being scheduled
@@ -1427,7 +1433,7 @@ public class Scheduler extends NamedObject {
             return; // no real parameters here anyway
         }
     
-        if (!(who1 instanceof SimProcess) && (what == null)) {
+        /*if (!(who1 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, "
@@ -1435,9 +1441,9 @@ public class Scheduler extends NamedObject {
                     "The first entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
-        if (!(who2 instanceof SimProcess) && (what == null)) {
+        /*if (!(who2 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, "
@@ -1445,7 +1451,7 @@ public class Scheduler extends NamedObject {
                     "The second entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
         if (TimeInstant.isBefore(when, this.presentTime())) {
             myExperiment
@@ -1472,7 +1478,7 @@ public class Scheduler extends NamedObject {
     /**
      * Schedules the event to happen immediately.
      */
-    protected void scheduleWithPreempt(Entity who1, Entity who2, EventOf2Entities<?,?> what) throws SuspendExecution {
+    protected void scheduleWithPreempt(Entity who1, Entity who2, EventOf2Entities<?,?> what) /*throws SuspendExecution //[PROCESS]*/ {
             
         if ((who1 == null) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
@@ -1496,7 +1502,7 @@ public class Scheduler extends NamedObject {
             return; // no real parameters here anyway
         }
     
-        if (!(who1 instanceof SimProcess) && (what == null)) {
+        /*if (!(who1 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, "
@@ -1504,9 +1510,9 @@ public class Scheduler extends NamedObject {
                     "The first entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
-        if (!(who2 instanceof SimProcess) && (what == null)) {
+        /*if (!(who2 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, "
@@ -1514,17 +1520,18 @@ public class Scheduler extends NamedObject {
                     "The second entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
     
         EventNote note = new EventNote(who1, who2, null, what, presentTime(), what.getSchedulingPriority(), _currentSchedulable);
     
-        if (_currentProcess == null) { // currently Event -> no preemption
+        /*if (_currentProcess == null) { // currently Event -> no preemption
             // inserted as first in the event-list with the current time as
             // activation
             evList.insertAsFirst(note);
         } else { // currently SimProcess -> preempt!
             preemptSimProcess(note);
-        }    
+        }    */
+        evList.insertAsFirst(note); //[PROCESS]
     }
     
     /**
@@ -1577,7 +1584,7 @@ public class Scheduler extends NamedObject {
             return; // no real parameters here anyway
         }
     
-        if (!(who1 instanceof SimProcess) && (what == null)) {
+        /*if (!(who1 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, Entity who3, "
@@ -1585,9 +1592,9 @@ public class Scheduler extends NamedObject {
                     "The first entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
-        if (!(who2 instanceof SimProcess) && (what == null)) {
+        /*if (!(who2 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, Entity who3, "
@@ -1595,9 +1602,9 @@ public class Scheduler extends NamedObject {
                     "The second entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
-        if (!(who3 instanceof SimProcess) && (what == null)) {
+        /*if (!(who3 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, Entity who3, "
@@ -1605,7 +1612,7 @@ public class Scheduler extends NamedObject {
                     "The third entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
         TimeInstant time = TimeOperations.add(presentTime(), dt);
         // set time for being scheduled
@@ -1666,7 +1673,7 @@ public class Scheduler extends NamedObject {
             return; // no real parameters here anyway
         }
     
-        if (!(who1 instanceof SimProcess) && (what == null)) {
+        /*if (!(who1 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, Entity who3, "
@@ -1674,9 +1681,9 @@ public class Scheduler extends NamedObject {
                     "The first entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
-        if (!(who2 instanceof SimProcess) && (what == null)) {
+        /*if (!(who2 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, Entity who3, "
@@ -1684,9 +1691,9 @@ public class Scheduler extends NamedObject {
                     "The second entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
-        if (!(who3 instanceof SimProcess) && (what == null)) {
+        /*if (!(who3 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, Entity who3, "
@@ -1694,7 +1701,7 @@ public class Scheduler extends NamedObject {
                     "The third entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
         if (TimeInstant.isBefore(when, this.presentTime())) {
             myExperiment
@@ -1721,7 +1728,7 @@ public class Scheduler extends NamedObject {
     /**
      * Schedules the event to happen immediately.
      */
-    protected void scheduleWithPreempt(Entity who1, Entity who2, Entity who3, EventOf3Entities<?,?,?>  what) throws SuspendExecution {
+    protected void scheduleWithPreempt(Entity who1, Entity who2, Entity who3, EventOf3Entities<?,?,?>  what) /*throws SuspendExecution //[PROCESS]*/ {
     
         if ((who1 == null) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
@@ -1756,7 +1763,7 @@ public class Scheduler extends NamedObject {
             return; // no real parameters here anyway
         }
     
-        if (!(who1 instanceof SimProcess) && (what == null)) {
+        /*if (!(who1 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, Entity who3, "
@@ -1764,9 +1771,9 @@ public class Scheduler extends NamedObject {
                     "The first entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
-        if (!(who2 instanceof SimProcess) && (what == null)) {
+        /*if (!(who2 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, Entity who3, "
@@ -1774,9 +1781,9 @@ public class Scheduler extends NamedObject {
                     "The second entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
         
-        if (!(who3 instanceof SimProcess) && (what == null)) {
+        /*if (!(who3 instanceof SimProcess) && (what == null)) {
             myExperiment.sendWarning("Can't schedule Entity and Event! "
                     + "Command ignored.", "Scheduler : " + getName()
                     + " Method: schedule(Entity who1, Entity who2, Entity who3, "
@@ -1784,17 +1791,18 @@ public class Scheduler extends NamedObject {
                     "The third entity needs a valid Event to be scheduled with.",
                     "Only SimProcesses may be scheduled without events.");
             return; // Event needed with Entity
-        }
+        }*/ //[PROCESS]
     
         EventNote note = new EventNote(who1, who2, who3, what, presentTime(), what.getSchedulingPriority(), _currentSchedulable);
     
-        if (_currentProcess == null) { // currently Event -> no preemption
+        /*if (_currentProcess == null) { // currently Event -> no preemption
             // inserted as first in the event-list with the current time as
             // activation
             evList.insertAsFirst(note);
         } else { // currently SimProcess -> preempt!
             preemptSimProcess(note);
-        }
+        }*/
+        evList.insertAsFirst(note); //[PROCESS]
     }	
 	
 	/**
@@ -1883,7 +1891,7 @@ public class Scheduler extends NamedObject {
 			return; // if no Entity it must be ExternalEvent
 		}
 
-		if (!(who instanceof SimProcess) && (what == null)) {
+		/*if (!(who instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulabe "
@@ -1891,7 +1899,7 @@ public class Scheduler extends NamedObject {
 					"The Entity needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/ //[PROCESS]
 		
 		if(what != null)
 		{
@@ -2004,23 +2012,23 @@ public class Scheduler extends NamedObject {
 			return; // no real parameters here anyway
 		}
 	
-		if (!(who1 instanceof SimProcess) && (what == null)) {
+		/*if (!(who1 instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulable after, Entity who1, Entity who2, EventOf2Entities what)",
 					"The Entity 'who1' needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/ //[PROCESS]
 		
-		if (!(who2 instanceof SimProcess) && (what == null)) {
+		/*if (!(who2 instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulable after, Entity who1, Entity who2, EventOf2Entities what)",
 					"The Entity 'who2' needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/ //[PROCESS]
 	
 		if (after != _currentSchedulable) {
 			// all parameters checked, now go on and schedule
@@ -2132,32 +2140,32 @@ public class Scheduler extends NamedObject {
 			return; // no real parameters here anyway
 		}
 	
-		if (!(who1 instanceof SimProcess) && (what == null)) {
+		/*if (!(who1 instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulable after, Entity who1, Entity who2, Entity who3, EventOf3Entities what)",
 					"The Entity 'who1' needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/ //[PROCESS]
 		
-		if (!(who2 instanceof SimProcess) && (what == null)) {
+		/*if (!(who2 instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulable after, Entity who1, Entity who2, Entity who3, EventOf3Entities what)",
 					"The Entity 'who2' needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/ //[PROCESS]
 		
-		if (!(who3 instanceof SimProcess) && (what == null)) {
+		/*if (!(who3 instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulable after, Entity who1, Entity who2, Entity who3, EventOf3Entities what)",
 					"The Entity 'who3' needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/ //[PROCESS]
 	
 		if (after != _currentSchedulable) {
 			// all parameters checked, now go on and schedule
@@ -2253,16 +2261,16 @@ public class Scheduler extends NamedObject {
 			return; // if no Entity it must be ExternalEvent
 		}
 
-		if (!(who instanceof SimProcess) && (what == null)) {
+		/*if (!(who instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: Schedulable before, Entity who, EventAbstract what",
 					"The Entity needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/ //[PROCESS]
 		
-		if(what != null)
+		/*if(what != null)
 		{
 			if (what.getNumberOfEntities() > 1) 
 			{
@@ -2273,7 +2281,7 @@ public class Scheduler extends NamedObject {
 						"You are using an event for multiple entities. You need an event for a single entity.");
 				return; // Event needed with Entity
 			}
-		}
+		}*/ //[PROCESS]
 
 		// all parameters checked, now go on and schedule
 		EventNote beforeNote = before.getEventNotes().get(0);
@@ -2369,23 +2377,23 @@ public class Scheduler extends NamedObject {
 			
 		}
 	
-		if (!(who1 instanceof SimProcess) && (what == null)) {
+		/*if (!(who1 instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulable after, Entity who1, Entity who2, EventOf2Entities what)",
 					"The Entity 'who1' needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/ //[PROCESS]
 		
-		if (!(who2 instanceof SimProcess) && (what == null)) {
+		/*if (!(who2 instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulable after, Entity who1, Entity who2, EventOf2Entities what)",
 					"The Entity 'who2' needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}	
+		}	*/ //[PROCESS]
 	
 		// all parameters checked, now go on and schedule
 	    EventNote beforeNote = before.getEventNotes().get(0);
@@ -2492,32 +2500,32 @@ public class Scheduler extends NamedObject {
 			return; // no real parameters here anyway
 		}
 	
-		if (!(who1 instanceof SimProcess) && (what == null)) {
+		/*if (!(who1 instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulable after, Entity who1, Entity who2, Entity who3, EventOf3Entities what)",
 					"The Entity 'who1' needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/ //[PROCESS]
 		
-		if (!(who2 instanceof SimProcess) && (what == null)) {
+		/*if (!(who2 instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulable after, Entity who1, Entity who2, Entity who3, EventOf3Entities what)",
 					"The Entity 'who2' needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/
 		
-		if (!(who3 instanceof SimProcess) && (what == null)) {
+		/*if (!(who3 instanceof SimProcess) && (what == null)) {
 			myExperiment.sendWarning("Can't schedule Entity and Event! "
 					+ "Command ignored.", "Scheduler : " + getName()
 					+ " Method: scheduleAfter(Schedulable after, Entity who1, Entity who2, Entity who3, EventOf3Entities what)",
 					"The Entity 'who3' needs a valid Event to be scheduled with.",
 					"Only SimProcesses may be scheduled without events.");
 			return; // Event needed with Entity
-		}
+		}*/
 	
 		// all parameters checked, now go on and schedule
         EventNote beforeNote = before.getEventNotes().get(0);
@@ -2623,9 +2631,9 @@ public class Scheduler extends NamedObject {
 		        if (this._currentEntity3 != null) buffer.append("," + this._currentEntity3);
 		    }
 		    buffer.append("][" + this._currentEvent + "]");
-		} else if (this._currentProcess != null) {
+		} /*else if (this._currentProcess != null) {
             buffer.append(" current process [" + this._currentProcess + "]");
-        }
+        }*/ //[PROCESS]
 		
 		buffer.append(" <br>EvenList: ");
 

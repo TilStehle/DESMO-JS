@@ -107,7 +107,7 @@ public class ModelReporter extends desmoj.core.report.Reporter {
 	public String[] getEntries() {
 	    
 	    Model m = (Model) source;
-		entries[0] = m.description();  
+		entries[0] = m.modelDescription();  
 
 		return entries;
 

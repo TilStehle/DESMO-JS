@@ -79,7 +79,7 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 	 * @param proc
 	 *            SimProcess : Is this SimProcess a valid one?
 	 */
-	protected boolean checkProcess(SimProcess proc) {
+	/*protected boolean checkProcess(SimProcess proc) {
 
 		if (proc == null) // if proc is a null pointer instead of a process
 		{
@@ -106,7 +106,7 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 		}
 
 		return true;
-	}
+	}*/ //[PROCESS]
 	
 	/**
 	 * Returns true if the given Entity is contained in the list, false
@@ -412,6 +412,7 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 		if (evt.getPropertyName() == "avail") {
 			// check if anybody is in the queue
 			if (!isEmpty()) {
+				/*
 				// get the first process in the queue
 				SimProcess next = (SimProcess) first();
 
@@ -445,6 +446,7 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 				if (wasBlocked) {
 					next.setBlocked(true);
 				}
+				*/ return; //[PROCESS]
 			} // end if isEmpty()
 		} // end if propertyName == available
 

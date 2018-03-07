@@ -67,7 +67,7 @@ public class EventsExample extends Model {
 	 * Returns a description of the model to be used in the report.
 	 * @return model description as a string
 	 */
-	public String description() {
+	public String modelDescription() {
 		return "This model describes a queueing system located at a "+
 					"container terminal. Trucks will arrive and "+
 					"require the loading of a container. A van carrier (VC) is "+

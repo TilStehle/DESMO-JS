@@ -2,8 +2,8 @@ package desmoj.core.report;
 
 import java.util.TreeMap;
 
-import desmoj.core.advancedModellingFeatures.report.StockReporter;
-import desmoj.core.report.HistogramReporter;
+//import desmoj.core.advancedModellingFeatures.report.StockReporter;
+//import desmoj.core.report.HistogramReporter;
 import desmoj.core.report.html5chart.CanvasHistogramDouble;
 import desmoj.core.report.html5chart.CanvasHistogramLong;
 import desmoj.core.report.html5chart.CanvasTimeSeries;
@@ -100,7 +100,7 @@ public class ReportMultRowsFileOut extends ReportFileOut {
 		//and the formatter is a HTMLTableChartFormatter
 		//then draw the TimeSeries in a canvas before the new reporter is displayed
 		//---added by Johanna Djimandjaja
-		if (lastReporter instanceof desmoj.core.report.TimeSeriesReporter
+		/*if (lastReporter instanceof desmoj.core.report.TimeSeriesReporter
 				&& !(r instanceof desmoj.core.report.TimeSeriesReporter)) {			
 
 			HTMLTableChartFormatter chartFormatter = null;
@@ -116,7 +116,7 @@ public class ReportMultRowsFileOut extends ReportFileOut {
 	                chartFormatter.drawChart(c);
 				}
 			}
-		}
+		}*/ //[FRAGMENT]
 
 		// first Reporter to be printed here always writes heading and starts
 		// table
@@ -297,7 +297,7 @@ public class ReportMultRowsFileOut extends ReportFileOut {
 			//add the chart data of the TimeSeries to the canvas
 			//and add the color representing this TimeSeries in the chart
 			//---added by Johanna Djimandjaja
-			if (r instanceof TimeSeriesReporter &&
+			/*if (r instanceof TimeSeriesReporter &&
 					formatter instanceof HTMLTableChartFormatter) {
 				
 				TimeSeriesReporter tsReporter = (TimeSeriesReporter) r;
@@ -314,7 +314,7 @@ public class ReportMultRowsFileOut extends ReportFileOut {
 					tsColor = _timeSeriesCanvas.get(data.getGroup()).addTimeSeries(tsReporter.getChartData());
 				}
 				chartFormatter.writeColoredCell(tsColor);
-			}
+			}*/ //[FRAGMENT]
 
 			// the row's finished now
 			formatter.closeRow();
@@ -342,35 +342,35 @@ public class ReportMultRowsFileOut extends ReportFileOut {
 		// ---------- inner reporter ----------------------------------------
 
 		// the HistogramReporter produces a special histogram table
-		if (r instanceof desmoj.core.report.HistogramReporter) {
+		/*if (r instanceof desmoj.core.report.HistogramReporter) {
 			// "Type-Cast"
 			desmoj.core.report.HistogramReporter hr = (desmoj.core.report.HistogramReporter) r;
 			this.innerReport(hr);
-		}
+		}*/ //[FRAGMENT]
 
 		// extended by Chr. M&uuml;ller (TH Wildau) 28.11.12
 		// the HistogramAccumulateReporter produces a special histogram table
-		if (r instanceof desmoj.core.report.HistogramAccumulateReporter) {
+		/*if (r instanceof desmoj.core.report.HistogramAccumulateReporter) {
 			// "Type-Cast"
 			desmoj.core.report.HistogramAccumulateReporter har = (desmoj.core.report.HistogramAccumulateReporter) r;
 			this.innerReport(har);
-		}
+		}*/ //[FRAGMENT]
 
 		// the TextHistogramReporter produces a special histogram table
-		if (r instanceof desmoj.core.report.TextHistogramReporter) {
+		/*if (r instanceof desmoj.core.report.TextHistogramReporter) {
 			// "Type-Cast"
 			desmoj.core.report.TextHistogramReporter thr = (desmoj.core.report.TextHistogramReporter) r;
 			this.innerReport(thr);
-		}
+		}*/ //[FRAGMENT]
 
 		// the StockReporter produces a special stock report about the two
 		// queues for the producers and consumers
 		// @TODO: Cond 3: isStockReporter
-		if (r instanceof desmoj.core.advancedModellingFeatures.report.StockReporter) {
+		/*if (r instanceof desmoj.core.advancedModellingFeatures.report.StockReporter) {
 			// "Type-Cast"
 			desmoj.core.advancedModellingFeatures.report.StockReporter sr = (desmoj.core.advancedModellingFeatures.report.StockReporter) r;
 			this.innerReport(sr);
-		} 
+		} */ //[FRAGMENT]
 
 		// --- The table reporter produces a table of arbitrary length.
 		// (Modification: Nicolas Knaak 27.11.2001)
@@ -381,7 +381,7 @@ public class ReportMultRowsFileOut extends ReportFileOut {
 		lastReporter = r;
 	}
 	
-	private void innerReport(HistogramReporter hr){
+	/*private void innerReport(HistogramReporter hr){
 		// copy values in buffer variables for faster access
 		String[] histTitleBuf = hr.getHistColumnTitles();
 		String[][] histEntryBuf = hr.getHistEntries();
@@ -447,9 +447,9 @@ public class ReportMultRowsFileOut extends ReportFileOut {
 			
 		}
 
-	}
+	}*/ //[FRAGMENT]
 
-	private void innerReport(HistogramAccumulateReporter hr){
+	/*private void innerReport(HistogramAccumulateReporter hr){
 		// copy values in buffer variables for faster access
 		String[] histTitleBuf = hr.getHistColumnTitles();
 		String[][] histEntryBuf = hr.getHistEntries();
@@ -512,9 +512,9 @@ public class ReportMultRowsFileOut extends ReportFileOut {
 				chartFormatter.drawChart(histCanvas);				
 			}
 		}
-	}
+	}*/ //[FRAGMENT]
 
-	private void innerReport(TextHistogramReporter thr){
+	/*private void innerReport(TextHistogramReporter thr){
 		// copy values in buffer variables for faster access
 		String[] textHistTitleBuf = thr.getTextHistColumnTitles();
 		String[][] histEntryBuf = thr.getTextHistEntries();
@@ -582,9 +582,9 @@ public class ReportMultRowsFileOut extends ReportFileOut {
 			}
 		}
 
-	}
+	}*/ //[FRAGMENT]
 	
-	private void innerReport(StockReporter sr){
+	/*private void innerReport(StockReporter sr){
 		// copy values in buffer variables for faster access
 		String[] stockTitleBuf = sr.getStockColumnTitles();
 		String[] stockEntryBuf = sr.getStockEntries();
@@ -621,7 +621,7 @@ public class ReportMultRowsFileOut extends ReportFileOut {
 
 		formatter.closeRow(); // close the row for the consumer queue data
 
-	}
+	}*/ //[FRAGMENT]
 
 	/** Writes a table reporter */
 	private void writeTableReporter(TableReporter tr, String[] titleBuf) {

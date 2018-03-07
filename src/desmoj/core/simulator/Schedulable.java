@@ -4,7 +4,7 @@ import java.lang.reflect.Constructor;
 import java.util.LinkedList;
 import java.util.List;
 
-import co.paralleluniverse.fibers.SuspendExecution;
+//import co.paralleluniverse.fibers.SuspendExecution; //[PROCESS]
 import desmoj.core.report.Reporter;
 
 /**
@@ -327,7 +327,7 @@ public class Schedulable extends ModelComponent {
      * Re-schedules the Schedulable to happen immediately, preempting
      * the current process.
      */
-    public void reSchedulePreempt() throws SuspendExecution {
+    /*public void reSchedulePreempt() throws SuspendExecution {
         
         if (getModel().getExperiment().getScheduler().getCurrentSimProcess() == null) {
             sendWarning("Can't preempt current SimProcess! "
@@ -374,7 +374,7 @@ public class Schedulable extends ModelComponent {
             sendDebugNote("reschedules on EventList<br>"
                     + getModel().getExperiment().getScheduler().toString());
         }
-    }
+    }*/ //[PROCESS]
     
     /**
      * Returns the next point of time this entity is scheduled.

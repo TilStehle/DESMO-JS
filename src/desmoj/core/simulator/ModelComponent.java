@@ -170,11 +170,11 @@ public class ModelComponent extends NamedObject {
 	 * 
 	 * @return SimProcess : The current active SimProcess.
 	 */
-	public SimProcess currentSimProcess() {
+	/*public SimProcess currentSimProcess() {
 
 		return _owner.getExperiment().getScheduler().getCurrentSimProcess();
 
-	}
+	}*/ //[PROCESS]
 
 	/**
 	 * Returns the current simulation time as displayed by the simulation clock

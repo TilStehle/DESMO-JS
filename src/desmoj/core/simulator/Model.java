@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import co.paralleluniverse.fibers.SuspendExecution;
+//import co.paralleluniverse.fibers.SuspendExecution; //[PROCESS]
 import desmoj.core.report.ModelReporter;
 import desmoj.core.report.ReportManager;
 import desmoj.core.report.Reporter;
@@ -244,7 +244,7 @@ public abstract class Model extends Reportable {
      * 
      * @return java.lang.String : The description of the model as a text String
      */
-    public abstract String description();
+    public abstract String modelDescription(); //[TS/JS]
 
     /**
      * Implement this method to schedule the entities and/or events needed for

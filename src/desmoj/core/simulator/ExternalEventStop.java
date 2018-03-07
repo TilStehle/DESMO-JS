@@ -1,6 +1,6 @@
 package desmoj.core.simulator;
 
-import co.paralleluniverse.fibers.SuspendExecution;
+//import co.paralleluniverse.fibers.SuspendExecution; //[PROCESS]
 
 /**
  * The external event to stop a running experiment.

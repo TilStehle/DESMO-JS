@@ -10,9 +10,9 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 
-import co.paralleluniverse.fibers.SuspendExecution;
-import co.paralleluniverse.strands.Strand;
-import co.paralleluniverse.strands.SuspendableRunnable;
+//import co.paralleluniverse.fibers.SuspendExecution; //[PROCESS]
+//import co.paralleluniverse.strands.Strand; //[PROCESS]
+//import co.paralleluniverse.strands.SuspendableRunnable; //[PROCESS]
 import desmoj.core.dist.DistributionManager;
 import desmoj.core.dist.LinearCongruentialRandomGenerator;
 import desmoj.core.exception.DESMOJException;
@@ -151,7 +151,7 @@ public class Experiment extends NamedObject {
 	 */
 	static Class<desmoj.core.report.Reporter> reporter;
 	
-	private static CoroutineModel coroutineModel = CoroutineModel.THREADS;
+	//private static CoroutineModel coroutineModel = CoroutineModel.THREADS; //[PROCESS]
 	
     /**
      * Flag indicating at least one error or warning has occurred.
@@ -196,7 +196,7 @@ public class Experiment extends NamedObject {
 	/**
 	 * The factory for strands (threads or fibers).
 	 */
-	private SimStrandFactory _strandFactory;
+	//private SimStrandFactory _strandFactory; //[PROCESS]
 
 	/**
 	 * The list to register all OutputType objects to close them after finishing
@@ -214,7 +214,7 @@ public class Experiment extends NamedObject {
 	 * The resource database storing all resource allocations and requests. Also
 	 * needed to detect deadlocks.
 	 */
-	private ResourceDB _resDB;
+	//private ResourceDB _resDB; //[PROCESS]
 
 	/**
 	 * The TimeInstant when the experiment is supposed to stop. Is initially
@@ -291,7 +291,7 @@ public class Experiment extends NamedObject {
 	 */
 	private DESMOJException _interruptingException;
 
-    private Strand _schedulerStrand;
+    //private Strand _schedulerStrand; //[PROCESS]
 		
 	/**
      * Constructs a new Experiment with a given name.  
@@ -500,7 +500,7 @@ public class Experiment extends NamedObject {
         _stopConditions = new ArrayList<ModelCondition>(); // empty, i.e. no Stopper
                                                         // can be set at
                                                         // instantiation time
-        _strandFactory = coroutineModel.createStrandFactory(name);
+        //_strandFactory = coroutineModel.createStrandFactory(name); //[PROCESS]
         
         System.getProperties().setProperty("co.paralleluniverse.fibers.disableAgentWarning", Boolean.TRUE.toString()); // suppress non-running agent warning
                 
@@ -647,7 +647,7 @@ public class Experiment extends NamedObject {
 
         // create a resource database and tell it that it belongs to this
         // experiment
-        _resDB = new ResourceDB(this);
+        //_resDB = new ResourceDB(this); //[PROCESS]
 
         // set status to first valid value - initialized, but not connected
         _status = INITIALIZED;
@@ -1034,7 +1034,7 @@ public class Experiment extends NamedObject {
 			f.close();
 
 		// kill all SimThreads still active
-		this.getStrandFactory().cleanUp();
+		//this.getStrandFactory().cleanUp(); //[PROCESS]
 
 	}
 
@@ -1167,10 +1167,10 @@ public class Experiment extends NamedObject {
 	 *         allocations and requests.
 	 * @author Soenke Claassen
 	 */
-	public ResourceDB getResourceDB() {
+	/*public ResourceDB getResourceDB() {
 
 		return _resDB;
-	}
+	}*/ //[PROCESS]
 
 	/**
 	 * Returns the scheduler for this experiment. ModelComponents need access to
@@ -1228,9 +1228,9 @@ public class Experiment extends NamedObject {
              this._stopConditions.clear();
       }
 
-	SimStrandFactory getStrandFactory() {
+	/*SimStrandFactory getStrandFactory() {
 	    return this._strandFactory;
-	}
+	}*/ //[PROCESS]
 
 	/**
 	 * Displays the current state of the simulation run. If an experiment is
@@ -1420,6 +1420,7 @@ public class Experiment extends NamedObject {
 
 		_status = RUNNING; // now checked to run
 		
+		/*
 		try {
 		    //main proceed code has to be executed in a strand because it can be suspended (locks)
             this._schedulerStrand = this.getStrandFactory().create("proceed", new SuspendableRunnable() {
@@ -1438,6 +1439,7 @@ public class Experiment extends NamedObject {
             disasterRecovery(e);
             Thread.currentThread().interrupt();
         }
+        */ //[PROCESS]
 
 		// print status message to user...
 		if (!_silent) { 
@@ -1454,6 +1456,7 @@ public class Experiment extends NamedObject {
 	    }
 	}
 
+	/*
     private void doProceed() throws SuspendExecution {
         boolean gotEvent = false; // buffer to check if scheduler works
 
@@ -1501,7 +1504,7 @@ public class Experiment extends NamedObject {
 					"Make sure to always have events to be scheduled i.e. by letting an "
 							+ "Entity create and schedule its successor.");
 		}
-    }
+    }*/ //[PROCESS]
 
     private void disasterRecovery(Exception e) {
         System.err.println("disaster recovery");
@@ -2726,13 +2729,13 @@ public class Experiment extends NamedObject {
 	 * To use fibers, the Quasar agent has to be activated at the JVM command line.
 	 * See http://docs.paralleluniverse.co/quasar/#instrumentation for further details.
 	 */
-	public static void setCoroutineModel(CoroutineModel model) {
+	/*public static void setCoroutineModel(CoroutineModel model) {
 	    coroutineModel = model;
-	}
+	}*/ //[PROCESS]
 	
-    Strand getSchedulerStrand() {
+    /*Strand getSchedulerStrand() {
         return _schedulerStrand;
-    }
+    }*/ //[PROCESS]
     
     /**
      * Legacy constructor.

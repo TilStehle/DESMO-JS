@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import co.paralleluniverse.fibers.SuspendExecution;
+//import co.paralleluniverse.fibers.SuspendExecution; //[PROCESS]
 
 /**
  * Represents the superclass for all entities of a model. Entities are supposed
@@ -248,11 +248,11 @@ public abstract class Entity extends Schedulable {
 	 * @return boolean : Is <code>true</code> if this Entity is an instance of
 	 *         class <code>SimProcess</code>,<code>false</code> otherwise
 	 */
-	public boolean isSimProcess() {
+	/*public boolean isSimProcess() {
 
 		return (this instanceof SimProcess);
 
-	}
+	}*/ //[PROCESS]
 
 	/**
 	 * Checks if the first of the two entities has a lower priority than the
@@ -902,7 +902,7 @@ public abstract class Entity extends Schedulable {
      *            Event : The Event that manipulates this Entity
      * @see SimClock
      */
-    public void schedulePreempt(Event<?> what) throws SuspendExecution {
+    /*public void schedulePreempt(Event<?> what) throws SuspendExecution {
 
         if ((what == null)) {
             sendWarning("Can't schedule Entity! Command ignored.", "Entity : "
@@ -934,7 +934,7 @@ public abstract class Entity extends Schedulable {
                     + getModel().getExperiment().getScheduler().toString());
         }
 
-    }
+    }*/ //[PROCESS]
 
 
     /**
@@ -947,7 +947,7 @@ public abstract class Entity extends Schedulable {
      *            EventOf2Entities : The event to be scheduled
      * @see SimClock
      */
-    public <E extends Entity> void schedulePreempt(E who2, EventOf2Entities<?, E> what) throws SuspendExecution {
+    /*public <E extends Entity> void schedulePreempt(E who2, EventOf2Entities<?, E> what) throws SuspendExecution {
         
         if ((who2 == null)) {
             sendWarning(
@@ -991,7 +991,7 @@ public abstract class Entity extends Schedulable {
                     + getModel().getExperiment().getScheduler().toString());
         }
     
-    }
+    }*/ //[PROCESS]
 
     
     /**
@@ -1006,7 +1006,7 @@ public abstract class Entity extends Schedulable {
      *            EventOf3Entities : The event to be scheduled
      * @see SimClock
      */
-    public <E extends Entity, F extends Entity> void schedulePreempt(E who2, F who3, EventOf3Entities<?, E, F> what) throws SuspendExecution {
+    /*public <E extends Entity, F extends Entity> void schedulePreempt(E who2, F who3, EventOf3Entities<?, E, F> what) throws SuspendExecution {
         
         if ((who2 == null)) {
             sendWarning("Can't schedule Entity! Command ignored.", "Entity : "
@@ -1056,7 +1056,7 @@ public abstract class Entity extends Schedulable {
                     + getModel().getExperiment().getScheduler().toString());
         }
     
-    }
+    }*/ //[PROCESS]
 
 	/**
 	 * Schedules this Entity with the given Event to occur directly after the
