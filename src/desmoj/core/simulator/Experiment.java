@@ -1,14 +1,14 @@
 package desmoj.core.simulator;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+//import java.awt.event.WindowAdapter; //[GUI]
+//import java.awt.event.WindowEvent; //[GUI]
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
+import def.TimeUnit;
 
-import javax.swing.JFrame;
+//import javax.swing.JFrame; //[GUI]
 
 //import co.paralleluniverse.fibers.SuspendExecution; //[PROCESS]
 //import co.paralleluniverse.strands.Strand; //[PROCESS]
@@ -1405,6 +1405,7 @@ public class Experiment extends NamedObject {
 		// display a progress bar if stop time is known and showProgressBar is
 		// true
 		if (_stopTime != null && _showProgressBar) {
+			/*
 			JFrame frame = new ExpProgressBar(this, _showProgressBarAutoclose);
 
 			frame.addWindowListener(new WindowAdapter() {
@@ -1416,6 +1417,7 @@ public class Experiment extends NamedObject {
 			frame.pack();
 			// frame.setSize(380,90);
 			frame.setVisible(true);
+			*/ //[GUI]
 		}
 
 		_status = RUNNING; // now checked to run

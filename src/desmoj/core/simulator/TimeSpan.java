@@ -1,8 +1,8 @@
 package desmoj.core.simulator;
 
-import java.util.concurrent.TimeUnit;
+import def.TimeUnit;
 
-import static java.util.concurrent.TimeUnit.*;
+import static def.TimeUnit.*;
 
 /**
  * Represents spans of simulation time. Each span of simulation time is

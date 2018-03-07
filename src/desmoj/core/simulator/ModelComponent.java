@@ -508,4 +508,9 @@ public class ModelComponent extends NamedObject {
 		_traceMode = true; // yep, that's it!
 
 	}
+	
+	//[JSWEET]
+	protected ModelComponent clone() throws CloneNotSupportedException {
+		return (ModelComponent) super.clone();
+	}
 }

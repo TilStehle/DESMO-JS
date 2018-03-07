@@ -1,7 +1,7 @@
 package demos.eventsexample;
 
 import desmoj.core.simulator.*;
-import java.util.concurrent.TimeUnit;
+import def.TimeUnit;
 /**
  * This class represents an entity (and event) source, which continually generates
  * trucks (and their arrival events) in order to keep the simulation running.

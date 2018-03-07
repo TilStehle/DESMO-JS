@@ -1,6 +1,6 @@
 package desmoj.core.dist;
 
-import java.util.concurrent.TimeUnit;
+import def.TimeUnit;
 
 import desmoj.core.simulator.TimeSpan;
 

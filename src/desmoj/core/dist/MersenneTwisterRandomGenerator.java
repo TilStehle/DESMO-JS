@@ -1,6 +1,7 @@
 package desmoj.core.dist;
 
-import java.util.Random;
+//import java.util.Random;
+import def.Random;
 
 /**
  * Mersenne twister uniform pseudo random generator configured such that a

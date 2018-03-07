@@ -1,6 +1,7 @@
 package desmoj.core.simulator;
 
-import java.util.Random;
+//import java.util.Random;
+import def.Random; //[RANDOM]
 
 /**
  * Contains the implementation with the java.util.LinkedList to represent queueing
@@ -59,7 +60,9 @@ public class QueueListRandom<E extends Entity> extends QueueListStandard<E> impl
 		this.abbreviation = "RANDOM";
 		
 		// set position generator
-		this._positionGenerator = new Random();
+		Random random = new Random(0); //Refactored to use autoseed
+		random.autoSeed();
+		this._positionGenerator = random; //[RANDOM]
 
 		// we don't know the client queue yet.
 		// Must be provided later by calling the setQueueBased() method
@@ -95,7 +98,8 @@ public class QueueListRandom<E extends Entity> extends QueueListStandard<E> impl
 			return;
 		}
 		
-		int position = this._positionGenerator.nextInt(this.size() + 1);
+		//int position = this._positionGenerator.nextInt(this.size() + 1);
+		int position = this._positionGenerator.nextIntWithBound((this.size() + 1)); //[RANDOM]
 	    // index between 0 (first) and size() (one position after the last Entity at index size()-1)
 		
         queuelist.add(position, e);

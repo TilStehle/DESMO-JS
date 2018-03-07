@@ -104,4 +104,9 @@ public abstract class NamedObject {
 		return _myName;
 
 	}
+	
+	//[JSWEET]
+	protected NamedObject clone() throws CloneNotSupportedException {
+		return (NamedObject) super.clone();
+	}
 }

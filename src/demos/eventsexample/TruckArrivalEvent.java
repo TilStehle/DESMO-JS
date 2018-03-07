@@ -1,7 +1,7 @@
 package demos.eventsexample;
 
 import desmoj.core.simulator.*;
-import java.util.concurrent.TimeUnit;
+import def.TimeUnit;
 /**
  * This class represents the truck arrival event
  * in the EventsExample model.

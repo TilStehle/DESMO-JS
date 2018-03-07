@@ -1,6 +1,7 @@
 package desmoj.core.simulator;
 
-import java.util.Observable;
+//import java.util.Observable;
+import def.Observable;
 
 /**
  * The simulation clock shows the actual simulation time. The actual simulation
@@ -111,7 +112,7 @@ public class SimClock extends Observable {
 
 		// tell every Observer registered the actual TimeInstant which will be
 		// changed now
-		notifyObservers(_timeNow);
+		notifyObserversWithArgument(_timeNow);
 		
 		_timeNow = newTime; // now make the move for the next time change.
 	}

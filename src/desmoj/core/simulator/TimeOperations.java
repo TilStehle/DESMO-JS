@@ -1,6 +1,6 @@
 package desmoj.core.simulator;
 
-import java.util.concurrent.TimeUnit;
+import def.TimeUnit;
 
 
 /**

@@ -104,9 +104,8 @@ public abstract class Distribution extends desmoj.core.simulator.Reportable {
 														// reportable
 		if (randomGenerator == null) {
 			try {
-				randomGenerator = owner.getExperiment()
-						.getDistributionManager().getRandomNumberGenerator()
-						.newInstance(); // default RandomGenerator
+				Class<? extends UniformRandomGenerator> rgc = owner.getExperiment().getDistributionManager().getRandomNumberGenerator();
+				randomGenerator = rgc.newInstance(); // default RandomGenerator //[JSWEET]
 			} catch (InstantiationException e) {
 				randomGenerator = new LinearCongruentialRandomGenerator();
 			} catch (IllegalAccessException e) {
@@ -222,9 +221,8 @@ public abstract class Distribution extends desmoj.core.simulator.Reportable {
 
 		if (randomGenerator == null) {
 			try {
-				randomGenerator = this.getModel().getExperiment()
-						.getDistributionManager().getRandomNumberGenerator()
-						.newInstance(); // default RandomGenerator
+				Class<? extends UniformRandomGenerator> rgc = this.getModel().getExperiment().getDistributionManager().getRandomNumberGenerator();
+				randomGenerator = rgc.newInstance(); // default RandomGenerator //[JSWEET]
 			} catch (InstantiationException e) {
 				randomGenerator = new LinearCongruentialRandomGenerator();
 			} catch (IllegalAccessException e) {

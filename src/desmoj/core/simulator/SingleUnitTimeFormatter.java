@@ -3,7 +3,7 @@ package desmoj.core.simulator;
 import java.util.EnumMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import def.TimeUnit;
 
 /**
  * This is the default Time Formatter. Use this class to format TimeSpan and

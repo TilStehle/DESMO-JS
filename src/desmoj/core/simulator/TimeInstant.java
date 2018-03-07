@@ -1,11 +1,11 @@
 package desmoj.core.simulator;
 
-import static java.util.concurrent.TimeUnit.*;
+import static def.TimeUnit.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
-import java.util.concurrent.TimeUnit;
+import def.TimeUnit;
 
 /**
  * Represents points in simulation time. Is used to indicate points in

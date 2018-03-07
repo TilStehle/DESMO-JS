@@ -2,7 +2,7 @@ package demos.eventsexample;
 
 import desmoj.core.simulator.*;
 import desmoj.core.dist.*;
-import java.util.concurrent.TimeUnit;
+import def.TimeUnit;
 
 /**
  * This is the model class. It is the main class of a simple event-oriented

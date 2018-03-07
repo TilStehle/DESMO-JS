@@ -1,6 +1,7 @@
 package desmoj.core.dist;
 
-import java.util.Random;
+//import java.util.Random;
+import def.Random;
 
 /**
  * Linear congruential random generator for uniformly distributed pseudo random

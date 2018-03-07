@@ -244,7 +244,7 @@ public abstract class Model extends Reportable {
      * 
      * @return java.lang.String : The description of the model as a text String
      */
-    public abstract String modelDescription(); //[TS/JS]
+    public abstract String modelDescription(); //[JSWEET]
 
     /**
      * Implement this method to schedule the entities and/or events needed for

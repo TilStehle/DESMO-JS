@@ -1,5 +1,6 @@
 package desmoj.core.dist;
 
+import def.MersenneTwisterRandomGeneratorJS;
 import desmoj.core.simulator.NamedObject;
 
 /**
@@ -67,8 +68,10 @@ public class DistributionManager extends NamedObject {
 
 		_antitheticMode = false; // set antithetic mode to false by default
 		
-		_seedGenerator = new MersenneTwisterRandomGenerator(seed); // create seed generator
-		_currentDefaultGenerator = MersenneTwisterRandomGenerator.class;
+		//_seedGenerator = new MersenneTwisterRandomGenerator(seed); // create seed generator
+		//_currentDefaultGenerator = MersenneTwisterRandomGenerator.class;
+		_seedGenerator = new MersenneTwisterRandomGeneratorJS(seed); // create seed generator
+		_currentDefaultGenerator = MersenneTwisterRandomGeneratorJS.class; //[RANDOM]
 		
 		//_seedGenerator = new LinearCongruentialRandomGenerator(seed); // create seed generator
      	//_currentDefaultGenerator = LinearCongruentialRandomGenerator.class;

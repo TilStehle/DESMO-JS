@@ -58,8 +58,9 @@ public abstract class ModelCondition extends ModelComponent {
         Class<?>[] types = new Class[3 + args.length];
         types[0] = Model.class;
         types[1] = String.class;
-        types[2] = Boolean.TYPE;
-                
+        //types[2] = Boolean.TYPE;
+        types[2] = boolean.class; //[JSWEET]
+        
         _arguments = new Object[3 + args.length];
         _arguments[0] = owner;
         _arguments[1] = name;
@@ -104,6 +105,7 @@ public abstract class ModelCondition extends ModelComponent {
     {
         Class<?> cls = obj.getClass();
         
+        /*
         return cls.equals(Boolean.class) ? Boolean.TYPE :
             cls.equals(Integer.class) ? Integer.TYPE :
             cls.equals(Character.class) ? Character.TYPE :
@@ -114,5 +116,17 @@ public abstract class ModelCondition extends ModelComponent {
             cls.equals(Float.class) ? Float.TYPE :
             cls.equals(String.class) ? String.class :
             null;
+        */
+        
+        return cls.equals(Boolean.class) ? boolean.class :
+            cls.equals(Integer.class) ? int.class :
+            cls.equals(Character.class) ? char.class :
+            cls.equals(Byte.class) ? byte.class :
+            cls.equals(Short.class) ? short.class :
+            cls.equals(Double.class) ? double.class :
+            cls.equals(Long.class) ? long.class :
+            cls.equals(Float.class) ? float.class :
+            cls.equals(String.class) ? String.class :
+            null; //[JSWEET]
     }
 }

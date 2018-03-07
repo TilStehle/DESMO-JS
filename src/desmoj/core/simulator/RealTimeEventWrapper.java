@@ -1,5 +1,7 @@
 package desmoj.core.simulator;
 
+import def.System;
+
 /**
  * Provides the basic frame for user defined events. Derive from this class to
  * design special real time external events for a model. To use real time

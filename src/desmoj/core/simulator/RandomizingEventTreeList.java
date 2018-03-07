@@ -1,6 +1,7 @@
 package desmoj.core.simulator;
 
-import java.util.Random;
+//import java.util.Random;
+import def.Random; //[RANDOM]
 
 /**
  * A specialized Event tree list providing random order for concurrent Event notes.
@@ -46,7 +47,10 @@ public class RandomizingEventTreeList extends EventTreeList {
 	 */
 	public RandomizingEventTreeList() {
 		super();
-		_positionGenerator = new Random();
+		//_positionGenerator = new Random();
+		Random random = new Random(0);
+		random.autoSeed();
+		_positionGenerator = random; //[RANDOM]
 	}
 
 	// ------------------------------------------------------------------
@@ -193,7 +197,8 @@ public class RandomizingEventTreeList extends EventTreeList {
 		// do we need to generate a random insert position?
 		if (firstIndexForInsert != lastIndexForInsert) {
 			// yeah, so here we go
-			firstIndexForInsert += _positionGenerator.nextInt(lastIndexForInsert - firstIndexForInsert + 1);
+			//firstIndexForInsert += _positionGenerator.nextInt(lastIndexForInsert - firstIndexForInsert + 1);
+			firstIndexForInsert += _positionGenerator.nextIntWithBound(lastIndexForInsert - firstIndexForInsert + 1); //[RANDOM]
 			// defer in case connection violated
 			while (firstIndexForInsert < this.eTreeList.size() && ((EventNote) eTreeList.get(firstIndexForInsert)).isConnected()) firstIndexForInsert++;
 		}

@@ -3,7 +3,8 @@ package desmoj.core.simulator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
+import def.TimeUnit;
+import def.System;
 import java.util.concurrent.locks.ReentrantLock;
 
 //import co.paralleluniverse.fibers.SuspendExecution; //[PROCESS]
