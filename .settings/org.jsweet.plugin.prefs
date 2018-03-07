@@ -1,0 +1,5 @@
+compiler.javascriptFolder=target/javascript
+compiler.moduleKind=none
+compiler.profiles=default
+compiler.typescriptFolder=target/typescript
+eclipse.preferences.version=1

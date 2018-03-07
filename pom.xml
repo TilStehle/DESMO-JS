@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>desmo_js_eventsexample</groupId>
+  <artifactId>desmo_js_eventsexample</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  
+    <repositories>
+    <repository>
+      <id>jsweet-central</id>
+      <name>libs-release</name>
+      <url>http://repository.jsweet.org/artifactory/libs-release-local</url>
+    </repository>
+    <repository>
+      <snapshots />
+      <id>jsweet-snapshots</id>
+      <name>libs-snapshot</name>
+      <url>http://repository.jsweet.org/artifactory/libs-snapshot-local</url>
+    </repository>
+  </repositories>
+  
+   <dependencies>
+   
+    <!-- JSweet core API -->
+    <dependency>
+    	<groupId>org.jsweet</groupId>
+    	<artifactId>jsweet-core</artifactId>
+    	<version>5-20170726</version>
+    </dependency>
+    
+    <!-- <dependency>
+		<groupId>org.jsweet.candies</groupId>
+		<artifactId>jquery</artifactId>
+		<version>1.10.0-20170726</version>
+	</dependency> -->
+	
+	<dependency>
+  		<groupId>org.jsweet.candies</groupId>
+  		<artifactId>random-js</artifactId>
+  		<version>1.0.8-1.1.0-20160525</version>
+	</dependency>
+    
+   </dependencies>
+  
+  
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
