@@ -9,4 +9,10 @@ public class System {
 		Date date = new Date();
 		return (long) date.getMilliseconds()*1000000;
 	}
+	
+	public static long currentTimeMillis() {
+		
+		Date date = new Date();
+		return (long) date.getMilliseconds();
+	}
 }

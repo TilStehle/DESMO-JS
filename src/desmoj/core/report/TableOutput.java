@@ -1,6 +1,7 @@
 package desmoj.core.report;
 
-import java.io.File;
+//import java.io.File;
+import def.File; //[JSWEET]
 
 /**
  * An output for tables containing simulation results. The table formatting is
@@ -102,7 +103,8 @@ public class TableOutput extends FileOutput {
 
 		// check for proper path and filename
 		if ((pathname == null) || (pathname.length() == 0))
-			pathname = System.getProperty("user.dir", ".");
+			//pathname = System.getProperty("user.dir", ".");
+			pathname = "."; //System properties not available in JS, therefore return default [JSWEET]
 		if ((name == null) || (name.length() == 0))
 			name = "DESMOJ";
 

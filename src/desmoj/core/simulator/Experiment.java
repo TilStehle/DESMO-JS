@@ -502,7 +502,7 @@ public class Experiment extends NamedObject {
                                                         // instantiation time
         //_strandFactory = coroutineModel.createStrandFactory(name); //[PROCESS]
         
-        System.getProperties().setProperty("co.paralleluniverse.fibers.disableAgentWarning", Boolean.TRUE.toString()); // suppress non-running agent warning
+        //System.getProperties().setProperty("co.paralleluniverse.fibers.disableAgentWarning", Boolean.TRUE.toString()); // suppress non-running agent warning [PROCESS]
                 
         _registryFileOutput = new ArrayList<FileOutput>();
         _registryOutputType = new ArrayList<OutputType>();
@@ -2077,10 +2077,13 @@ public class Experiment extends NamedObject {
 		// }
 		// }
 
+		/*
 		// Verify the class provided is not abstract
 		if ((randomNumberGenerator.getModifiers() & java.lang.reflect.Modifier.ABSTRACT) > 0
 				|| (randomNumberGenerator.getModifiers() & java.lang.reflect.Modifier.INTERFACE) > 0)
 			classValid = false;
+		*/
+		classValid = checkRandomGeneratorClassValidity(randomNumberGenerator); //[REFLECT]
 
 		// Update the random number generator...
 		if (classValid) {
@@ -2106,6 +2109,15 @@ public class Experiment extends NamedObject {
 	}
 	
 	/**
+	 * Check whether the given class is valid random generator in JavaScript //[REFLECT]
+	 * @param randomNumberGenerator
+	 * @return true if random generator is valid
+	 */
+	private boolean checkRandomGeneratorClassValidity(Class<? extends desmoj.core.dist.UniformRandomGenerator> randomNumberGenerator) {
+		throw new UnsupportedOperationException("Not yet implemented"); //TODO
+	}
+	
+	/**
 	 * Sets the underlying event list to be used be the experiment.
 	 * Entries already present in the current event list (if any) will be copied across.
 	 * 
@@ -2121,11 +2133,14 @@ public class Experiment extends NamedObject {
 
 		boolean classValid = true;
 
+		/*
 		// Verify the class provided is not abstract
 		if ((eventList == null 
 				|| (eventList.getModifiers() & java.lang.reflect.Modifier.ABSTRACT) > 0
 				|| (eventList.getModifiers() & java.lang.reflect.Modifier.INTERFACE) > 0))
 			classValid = false;
+		*/ 
+		classValid = checkEventListClassValidity(eventList); //[REFLECT]
 
 		EventList el = null; 
 		if (classValid) {
@@ -2156,6 +2171,15 @@ public class Experiment extends NamedObject {
 							"Make sure to use a non-abstract class that inherits from"
 									+ " desmoj.core.simulator.EventList.");
 		}
+	}
+	
+	/**
+	 * Check whether the given class is valid event list in JavaScript //[REFLECT]
+	 * @param eventList
+	 * @return true if event list is valid
+	 */
+	private boolean checkEventListClassValidity(Class<? extends desmoj.core.simulator.EventList> eventList) {
+		throw new UnsupportedOperationException("Not yet implemented"); //TODO
 	}
 
 	/**
@@ -2363,7 +2387,7 @@ public class Experiment extends NamedObject {
 		_client.register(new SimulationRunReporter.SimulationRunReporterProvider(_client));
 		// now everything is set up, go on and process events
 		_status = STARTED;
-		this._realTimeStartTime = System.nanoTime();
+		this._realTimeStartTime = def.System.nanoTime(); //[JSWEET]
 
 		proceed();
 

@@ -1,5 +1,7 @@
 package desmoj.core.report;
 
+import java.util.Date;
+
 import desmoj.core.simulator.Experiment;
 
 /**
@@ -37,7 +39,7 @@ public class HTMLTableFormatter extends AbstractTableFormatter {
 			closeTable();
 		out.writeln("<FONT SIZE=-2>created using <A HREF=http://www.desmoj.de>"
 				+ "DESMO-J</A> Version " + Experiment.getDesmoJVersion() + " at "
-				+ new java.util.Date() + " - DESMO-J is licensed under "
+				+ new Date() + " - DESMO-J is licensed under " //[JSWEET]
 				+ Experiment.getDesmoJLicense(true)
 				+ "</FONT>");
 		out.write("</BODY></HTML>");

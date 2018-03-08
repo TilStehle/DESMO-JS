@@ -528,7 +528,9 @@ public class EventTreeList extends EventList {
 
 		if (!eTreeList.isEmpty())
 		{
-			EventNote note = (EventNote) eTreeList.remove(0);
+			//EventNote note = (EventNote) eTreeList.remove(0);
+			Object noteObject = (Object) eTreeList.remove(0);
+			EventNote note = (EventNote) noteObject; //[JSWEET]
 			
 			if (note.getEntity1() != null) // if an entity exists (no external event)
 			{

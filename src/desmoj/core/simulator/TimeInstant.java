@@ -352,12 +352,14 @@ public final class TimeInstant implements Comparable<TimeInstant> {
      * 
      * @return Calendar: a Calendar representation of this TimeInstant
      */
+	/*
     public Calendar getTimeAsCalender() {
         Calendar cal = GregorianCalendar.getInstance();
         cal.setTimeInMillis(this.getTimeRounded(TimeUnit.MILLISECONDS));
         cal.setTimeZone(this._preferredTimeZone);
         return cal;
     }
+    */ //Calendar and Date both transpile to JavaScript Date, use getTimeAsDate instead [TIME]
     
     /**
      * Returns the value of this TimeInstant object as a Date object.
@@ -529,6 +531,7 @@ public final class TimeInstant implements Comparable<TimeInstant> {
      * @return TimeInstant: The TimeInstant at which the day/hour/minute/second/millisecond
      *            of the this TimeInstant has begun.
      */
+	/*
     public TimeInstant getBeginOf(TimeUnit smallestUnit){
         
         Calendar cal = GregorianCalendar.getInstance(this._preferredTimeZone);
@@ -548,6 +551,45 @@ public final class TimeInstant implements Comparable<TimeInstant> {
                 // nothing to as units smaller than milliseconds are truncated above    
         }
         return new TimeInstant(cal, true);
+    }*/ //Dependency to GregorianCalendar, reimplemented with JSweet candy [TIME]
+    
+	/**
+     * Determines that last instant prior to this instant at which 
+     * a new period of the unit provided "begins", which means smaller
+     * units are zero. <br/>
+     * Examples: Assume this TimeInstant is 28.12.2011 11:23:45:678. <br\>
+     * Calling <code>getBeginOf(TimeUnit.TimeUnit.DAYS)</code> yields
+     * 28.12.2011 00:00:00:000 (begin of current hour).<br\>
+     * Calling <code>getBeginOf(TimeUnit.TimeUnit.MINUTES)</code> yields
+     * 28.12.2011 11:23:00:000 (begin of current day).<br\>
+     * Note that days are interpreted with respect to this instant's
+     * preferred time zone.     
+     *
+     * @param smallestUnit
+     *            TimeUnit : the unit to begin (i.e. smaller units set to zero);
+     *            must be TimeUnit.DAYS, TimeUnit.HOURS, TimeUnit.MINUTES, TimeUnit.SECONDS or TimeUnit.MILLISECONDS.
+     * 
+     * @return TimeInstant: The TimeInstant at which the day/hour/minute/second/millisecond
+     *            of the this TimeInstant has begun.
+     */
+    public TimeInstant getBeginOf(TimeUnit smallestUnit) { //[TIME]
+    	
+    	def.js.Date date = new def.js.Date(this.getTimeRounded(TimeUnit.MILLISECONDS));
+    	
+    	switch (smallestUnit) {
+        	case DAYS:
+        		date.setHours(0);;            
+        	case HOURS:
+        		date.setMinutes(0);
+        	case MINUTES:
+        		date.setSeconds(0);
+        	case SECONDS: 
+        		date.setMilliseconds(0);
+        	case MILLISECONDS:
+        	default:
+        		// nothing to as units smaller than milliseconds are truncated above
+    	}	
+        return new TimeInstant(date.getTime(), MILLISECONDS);	
     }
 
     /**
