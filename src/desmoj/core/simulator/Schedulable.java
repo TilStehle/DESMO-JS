@@ -439,7 +439,7 @@ public class Schedulable extends ModelComponent {
          * @see desmoj.core.simulator.Reportable#createDefaultReporter()
          */
         public desmoj.core.report.Reporter createDefaultReporter() {
-
+        	/*
             try {
                 Constructor<?> constructor;
                 constructor = reporterClass.getConstructor(new Class[] {Schedulable.class});
@@ -454,7 +454,8 @@ public class Schedulable extends ModelComponent {
                       + "Such a reporter has to provide a constructor requiring a reference to this reportable as only parameter"
                    );
                 return createDefaultReporter();
-           }
+           }*/
+        	return createDefaultReporter(); //[REFLECT]
         }
     }   
         

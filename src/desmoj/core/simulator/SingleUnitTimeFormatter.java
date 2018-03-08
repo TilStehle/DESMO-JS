@@ -30,9 +30,12 @@ import def.TimeUnit;
  *
  */
 public class SingleUnitTimeFormatter implements TimeFormatter {
+	
+	/*
 	private static Map<TimeUnit, Map<TimeUnit, Long>> timeConstants = new EnumMap<TimeUnit, Map<TimeUnit, Long>>(
 			TimeUnit.class);
 
+	
 	static {
 
 		Map<TimeUnit, Long> dayConstants = new EnumMap<TimeUnit, Long>(
@@ -77,6 +80,8 @@ public class SingleUnitTimeFormatter implements TimeFormatter {
 		timeConstants.put(TimeUnit.MICROSECONDS, microConstants);
 
 	}
+	*/
+	
 	/**
 	 * The TimeUnit that is used in this TimeFormatter
 	 */
@@ -165,7 +170,7 @@ public class SingleUnitTimeFormatter implements TimeFormatter {
 			timeStringBuffer.append(fractionTimeString);
 			
 		}
-		timeStringBuffer.insert(0,Long.toString(_myTimeUnit.convert(timeValue,_epsilon)));
+		timeStringBuffer.insert(0, (String) Long.toString(_myTimeUnit.convert(timeValue,_epsilon)));
 		if (_writeUnit) {
 			//append the name of the time unit
 			timeStringBuffer.append(' ');

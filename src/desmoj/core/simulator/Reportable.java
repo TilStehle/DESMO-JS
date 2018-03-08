@@ -3,6 +3,7 @@ package desmoj.core.simulator;
 import java.lang.reflect.Constructor;
 import desmoj.core.report.Reporter;
 import desmoj.core.report.StandardReporter;
+import jsweet.lang.Replace;
 
 /**
  * All classes that want to publish their information have to extend this class
@@ -137,7 +138,7 @@ public abstract class Reportable extends ModelComponent {
      * 
      * @return desmoj.core.report.Reporter : A reporter for this reportable
      */
-public final Reporter getReporter() {
+    public final Reporter getReporter() {
         
         if (_myReporter != null)
             return _myReporter;
@@ -147,7 +148,7 @@ public final Reporter getReporter() {
             _myReporter = createDefaultReporter();
             return _myReporter;
         }
-        
+        /*
         try
         {
             Constructor<?> constructor
@@ -166,8 +167,39 @@ public final Reporter getReporter() {
                    + "Such a reporter has to provide a constructor requiring a reference to this reportable as only parameter"
                 );
              _myReporter = createDefaultReporter();
-        }       
+        }*/
+        tryInstantiatingCustomReporter(); //[REFLECT]
+       
         return _myReporter;
+    }
+    
+    /**
+     * Attempts to create an instance of the custom Reporter for this Reportable.
+     * Since the reflection used in the original method body in Java is not transpilable by JSweet
+     * it has to be implemented in TypeScript as the value of the Replace annotation or after 
+     * conversion in the JavaScript code
+     */
+    @Replace(value = "//not yet implemented, therefore keep using default")
+    private void tryInstantiatingCustomReporter() { //[REFLECT]
+    	try
+        {
+            Constructor<?> constructor
+                = _reporter.getConstructor(new Class[] {Reportable.class});
+            constructor.setAccessible(true);
+            _myReporter = (Reporter) constructor.newInstance(new Object[] {this});
+            
+        }
+        catch (Exception e)
+        {
+             this.sendWarning(
+                "Instanciating the user-specified reporter for this reportable caused an exception. Using the default reporter instead.", 
+                "Reportable : " + getName() + " Method: Reporter getReporter()", 
+                "User-specified class is not accessible or constructor cannot be invoked.", 
+                "Make sure provide an appropriate reporter class if you want to replace the default reporter. "
+                   + "Such a reporter has to provide a constructor requiring a reference to this reportable as only parameter"
+                );
+             _myReporter = createDefaultReporter();
+        }
     }
 
     /**

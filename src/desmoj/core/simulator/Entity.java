@@ -1750,4 +1750,9 @@ public abstract class Entity extends Schedulable {
         c._identNumber = this.getModel().linkWithIdentNumber(c);
         return c;
     }
+    
+    @Override
+    public boolean equals(Object obj) { //[JSWEET]
+    	return super.equals(obj);
+    }
 }

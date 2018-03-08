@@ -1,8 +1,9 @@
 package desmoj.core.simulator;
 
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList; //[JSWEET]
 import java.util.HashMap;
-import java.util.LinkedList;
+//import java.util.LinkedList; //[JSWEET]
 import desmoj.core.simulator.Entity;
 import desmoj.core.simulator.QueueBased;
 
@@ -47,7 +48,8 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 	/**
 	 * Uses the java.util.LinkedList for implementation
 	 */
-	protected java.util.LinkedList<E> queuelist;
+	//protected java.util.LinkedList<E> queuelist;
+	protected java.util.ArrayList<E> queuelist; //[JSWEET]
 	
 
 	/**
@@ -65,7 +67,8 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 		super();
 		
 		//the here used java.LinkedList
-		queuelist = new LinkedList<E>();
+		//queuelist = new LinkedList<E>();
+		queuelist = new ArrayList<E>(); //[JSWEET]
 		
 		//the here used java.WeakHashMap
 		timemap = new HashMap<E,TimeInstant>();
@@ -144,7 +147,8 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
         if (queuelist.isEmpty()) {
             return null;
         } else { 
-            return queuelist.getFirst();
+            //return queuelist.getFirst();
+        	return queuelist.get(0); //[JSWEET]
         }
     }
 
@@ -355,7 +359,8 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
         if (queuelist.isEmpty()) {
             return null;
         } else { 
-            return queuelist.getLast();
+            //return queuelist.getLast();
+        	return queuelist.get(queuelist.size()-1); //[JSWEET]
         }
     }
 
@@ -389,7 +394,8 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 			return null;
 		}
 		
-		if (e.equals(queuelist.getFirst())) // check for first element
+		//if (e.equals(queuelist.getFirst())) // check for first element
+		if (e.equals(queuelist.get(0))) // check for first element //[JSWEET]
 		{
 			return null;
 		}
@@ -530,9 +536,11 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 		}
 		
 		
-		E e = queuelist.remove(index);
+		//E e = queuelist.remove(index);
+		E e = queuelist.get(index); //[JSWEET]
 		
-		if (e == null) // if nothing has been removed
+		//if (e == null) // if nothing has been removed
+		if (queuelist.remove(e)) // if nothing has been removed //[JSWEET]
 		{
 			return false;
 		}
@@ -651,7 +659,8 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 			return null;
 		}
 		
-		if (e.equals(queuelist.getLast())) // check for last element
+		//if (e.equals(queuelist.getLast())) // check for last element
+		if (e.equals(queuelist.get(queuelist.size()-1))) // check for last element //[JSWEET]
 		{
 			return null;
 		}

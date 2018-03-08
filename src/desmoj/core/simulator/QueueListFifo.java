@@ -102,7 +102,8 @@ public class QueueListFifo<E extends Entity> extends QueueListStandard<E> implem
 			
 			if (swap == null)
 			{
-				queuelist.addFirst(e);
+				//queuelist.addFirst(e);
+				queuelist.add(0, e); //[JSWEET]
 				statisticalInsert(e); // update statistics
 				e.addQueueBased(this.clientQ); // sets entity's queue as this queued
 			}

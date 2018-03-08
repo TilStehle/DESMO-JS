@@ -95,7 +95,8 @@ public class QueueListLifo<E extends Entity> extends QueueListStandard<E> implem
 			
 			if (swap == null)
 			{
-				queuelist.addLast(e);
+				//queuelist.addLast(e);
+				queuelist.add(e); //[JSWEET]
 				statisticalInsert(e); // update statistics
 				e.addQueueBased(this.clientQ); // sets entity's queue as this queued
 			}

@@ -87,8 +87,9 @@ public class SimulationRunReporter extends desmoj.core.report.TableReporter {
         hours_tot    = elapsed_tot % 24;
         elapsed_tot /= 24;
         days_tot     = elapsed_tot; 
-        DecimalFormat formatter = new DecimalFormat("00");
-        String duration_tot = (days_tot > 0 ? days_tot +" day" + (days_tot > 1 ? "s " : " ") : "") + formatter.format(hours_tot) + ":" + formatter.format(minutes_tot) + ":" + formatter.format(seconds_tot);
+        //DecimalFormat formatter = new DecimalFormat("00");
+        //String duration_tot = (days_tot > 0 ? days_tot +" day" + (days_tot > 1 ? "s " : " ") : "") + formatter.format(hours_tot) + ":" + formatter.format(minutes_tot) + ":" + formatter.format(seconds_tot);
+        String duration_tot = (days_tot > 0 ? days_tot +" day" + (days_tot > 1 ? "s " : " ") : "") + hours_tot + ":" + minutes_tot + ":" + seconds_tot; //[JSWEET]
         
         entryTable = new String[numRows][numColumns];
         Model m = (Model) source;

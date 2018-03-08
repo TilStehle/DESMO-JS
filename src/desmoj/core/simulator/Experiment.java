@@ -2016,9 +2016,11 @@ public class Experiment extends NamedObject {
 	 * 			 Prefer to use <code>setEventList(...)</code>, permitting
 	 *           to set a concrete event list type, either ordered or random  
 	 */
+	/*
 	public void randomizeConcurrentEvents(boolean randomizing) {
 		setEventList(randomizing ? RandomizingEventTreeList.class : SortedMapEventList.class);
 	}
+	*/ //Deprecated and causes problems with SortedMapEventList [JSWEET]
 
 	/**
 	 * Sets the speed rate for an execution that is proportional to wall-clock
