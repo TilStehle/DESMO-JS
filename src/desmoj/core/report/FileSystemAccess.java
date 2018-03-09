@@ -1,7 +1,9 @@
 package desmoj.core.report;
 
 import java.io.IOException;
-import java.io.Writer;
+//import java.io.Writer; [FILE]
+
+import def.OutputWriter;
 
 /**
  * Strategy to create a writer for a given file path.
@@ -28,6 +30,7 @@ public interface FileSystemAccess {
     /**
      * Creates a writer for the given "filename".
      */
-    public abstract Writer createWriter(String filename) throws IOException;
+	//public abstract Writer createWriter(String filename) throws IOException;
+    public abstract OutputWriter createWriter(String filename) throws IOException; //[FILE]
 
 }

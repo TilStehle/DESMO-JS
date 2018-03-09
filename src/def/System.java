@@ -15,4 +15,14 @@ public class System {
 		Date date = new Date();
 		return (long) date.getMilliseconds();
 	}
+	
+	public static String getProperty(String key) {
+		
+		switch (key) {
+		case "line.separator":
+			return "/";
+		default:
+			return null;
+		}
+	}
 }

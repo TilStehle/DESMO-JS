@@ -1,9 +1,12 @@
 package desmoj.core.report;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+//import java.io.BufferedWriter;
+//import java.io.FileWriter; //[FILE]
 import java.io.IOException;
 import java.io.Writer;
+
+import def.ConsoleOutputWriter;
+import def.OutputWriter;
 
 /**
  * FileOutput is the class all other writer-based Output classes used within the
@@ -41,8 +44,9 @@ public class FileOutput {
      */
     public static final FileSystemAccess NORMAL_FILE_ACCESS = new FileSystemAccess() {
         @Override
-        public Writer createWriter(String filename) throws IOException {
-            return new FileWriter(filename);
+        public OutputWriter createWriter(String filename) throws IOException {
+            //return new FileWriter(filename);
+        	return new ConsoleOutputWriter(filename); //[FILE]
         }
     };
     
@@ -54,7 +58,8 @@ public class FileOutput {
 	/**
 	 * The character used to indicate the end of a line.
 	 */
-	private static String eol = System.getProperty("line.separator"); // standard OS eol
+    //private static String eol = System.getProperty("line.separator"); // standard OS eol
+	private static String eol = def.System.getProperty("line.separator"); // standard OS eol //[JSWEET]
 
 	/**
 	 * The character used to separate individual entries within a line.
@@ -69,7 +74,8 @@ public class FileOutput {
 	/**
 	 * The FileWriter used to open, close and write file and data.
 	 */
-	protected Writer file;
+	//protected Writer file;
+	protected OutputWriter file; //[FILE]
 
 	/**
 	 * The status of the current file.
@@ -120,14 +126,12 @@ public class FileOutput {
 			empty = true;
 		} catch (IOException ioEx) {
 			System.out.println("IOException thrown : " + ioEx);
-			System.out
-					.println("description: Can't flush and close " + fileName);
+			System.out.println("description: Can't flush and close " + fileName);
 			System.out.println("origin     : Experiment auxiliaries");
 			System.out.println("location   : FileOutput.close()");
 			System.out.println("hint       : Check access to the file and"
 					+ " that it is not in use by some other application.");
-			System.out
-					.println("The System will not be shut down. But the file "
+			System.out.println("The System will not be shut down. But the file "
 							+ fileName
 							+ " can not be closed and may contain no data!");
 			/*
@@ -233,7 +237,8 @@ public class FileOutput {
 
 		// now try to create a new file in the user's standard directory
 		try {
-			file = new BufferedWriter(fileSystem.createWriter(fileName));
+			//file = new BufferedWriter(fileSystem.createWriter(fileName));
+			file = fileSystem.createWriter(fileName); //[FILE]
 
 			fileOpen = true;
 			empty = true;
@@ -242,13 +247,10 @@ public class FileOutput {
 			System.out.println("description: Can't create file " + fileName);
 			System.out.println("origin     : While creating the Experiment "
 					+ "auxiliaries.");
-			System.out
-					.println("location   : method open() in class FileOutput.");
-			System.out
-					.println("hint       : Check access to the default path and "
+			System.out.println("location   : method open() in class FileOutput.");
+			System.out.println("hint       : Check access to the default path and "
 							+ "that no file of thesame name exists");
-			System.out
-					.println("The System will not be shut down. But the file "
+			System.out.println("The System will not be shut down. But the file "
 							+ fileName
 							+ " can not be opened and may not exist as "
 							+ "expected!");
@@ -321,8 +323,7 @@ public class FileOutput {
 			System.out.println("location   : class FileOutput, method write()");
 			System.out.println("hint       : Check access to the file and"
 					+ " that it is not in use by some other application.");
-			System.out
-					.println("The System will not be shut down. But it can not be "
+			System.out.println("The System will not be shut down. But it can not be "
 							+ "written to the file "
 							+ fileName
 							+ ".  The file may "
