@@ -1,6 +1,6 @@
 package desmoj.core.report.html5chart;
 
-import java.awt.Color;
+import def.Color; //import java.awt.Color; [COLOR]
 
 /**
  * A canvas to display charts in a coordinate system.

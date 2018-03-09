@@ -1,6 +1,7 @@
 package desmoj.core.report;
 
-import java.awt.Color;
+import def.Color; //import java.awt.Color; [COLOR]
+import def.Integer; //[JSWEET]
 import java.util.HashSet;
 
 import desmoj.core.report.html5chart.Canvas;

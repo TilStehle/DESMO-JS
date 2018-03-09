@@ -1,6 +1,6 @@
 package desmoj.core.report.html5chart;
 
-import java.awt.Color;
+import def.Color; //import java.awt.Color; [COLOR]
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

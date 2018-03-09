@@ -1,6 +1,9 @@
 package desmoj.core.report;
 
-import java.awt.Color;
+import java.util.Date; //[JSWEET]
+
+import def.Color; //import java.awt.Color; [COLOR]
+import def.Integer; //[JSWEET]
 
 import desmoj.core.report.html5chart.Canvas;
 import desmoj.core.simulator.Experiment;
@@ -120,8 +123,11 @@ public class HTMLTableChartFormatter extends AbstractTableFormatter {
 		out.writeln("<font size=\"-1\"><a href=\"#top\">top</a></font><p></p>");
 	
 		out.writeln("<font size=\"-2\">created using <a href=\"http://www.desmoj.de\">"
-				+ "DESMO-J</A> Version " + Experiment.getDesmoJVersion() + " at "
-				+ new java.util.Date() + " - DESMO-J is licensed under "
+				+ "DESMO-J</A> Version " 
+				+ Experiment.getDesmoJVersion() + " at "
+				//+ new java.util.Date()
+				+ new Date() //[JSWEET]
+				+ " - DESMO-J is licensed under "
 				+ Experiment.getDesmoJLicense(true)
 				+ "</font>");
 		out.write("</body></html>");
