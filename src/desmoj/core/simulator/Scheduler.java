@@ -1,11 +1,11 @@
 package desmoj.core.simulator;
 
-import java.util.LinkedList;
+import java.util.LinkedList; //[CONCURRENT]
 import java.util.List;
-import java.util.concurrent.LinkedBlockingQueue;
+//import java.util.concurrent.LinkedBlockingQueue; //[CONCURRENT]
 import def.TimeUnit;
 import def.System; //[JSWEET]
-import java.util.concurrent.locks.ReentrantLock;
+//import java.util.concurrent.locks.ReentrantLock; //[CONCURRENT]
 
 //import co.paralleluniverse.fibers.SuspendExecution; //[PROCESS]
 
@@ -128,19 +128,20 @@ public class Scheduler extends NamedObject {
 	 * Lock for process synchronisation during a realtime execution.
 	 * (Modification by Felix Klueckmann, 06/2009)
 	 */
-	private ReentrantLock _lock;
+	//private ReentrantLock _lock; //[CONCURRENT]
 
 	/**
 	 * The condition used for process synchronisation during a realtime
 	 * execution.
 	 */
-	private java.util.concurrent.locks.Condition _waitSynchCondition;
+	//private java.util.concurrent.locks.Condition _waitSynchCondition; //[CONCURRENT]
 
 	/**
 	 * A threadsafte consumer/producer queue to store
 	 * RealTimeEventWrapper-Objects send by external systems
 	 */
-	private java.util.concurrent.BlockingQueue<RealTimeEventWrapper> _realTimeEventQueue;
+	//private java.util.concurrent.BlockingQueue<RealTimeEventWrapper> _realTimeEventQueue;
+	private java.util.Queue<RealTimeEventWrapper> _realTimeEventQueue; //[CONCURRENT]
 
 	/**
 	 * Constructs a scheduler with given name and the event-list (i.e. inheritor
@@ -161,9 +162,10 @@ public class Scheduler extends NamedObject {
 		evList = eventList;
 		clock = new SimClock(name); // set reference to clock
 		simulationFinished = false; // set flag to "not yet finished",
-		_lock = new ReentrantLock();
-		_waitSynchCondition = _lock.newCondition();
-		_realTimeEventQueue = new LinkedBlockingQueue<RealTimeEventWrapper>();
+		//_lock = new ReentrantLock();
+		//_waitSynchCondition = _lock.newCondition();
+		//_realTimeEventQueue = new LinkedBlockingQueue<RealTimeEventWrapper>();
+		_realTimeEventQueue = new LinkedList<RealTimeEventWrapper>(); //[CONCURRENT]
 	}
 
 	/**
@@ -372,15 +374,15 @@ public class Scheduler extends NamedObject {
 		} else {
 
 			while (true) {
-				this._lock.lock();
+				//this._lock.lock(); //[CONCURRENT]
 				if (evList.isEmpty() && _realTimeEventQueue.isEmpty()) {
 					// no Event waiting
-					_lock.unlock();
+					//_lock.unlock(); //[CONCURRENT]
 					return false;
 				}
 				if (myExperiment.isStopped()) {
 					// experiment has been stopped
-					_lock.unlock();
+					//_lock.unlock(); //[CONCURRENT]
 					return true; // there is an event
 				}
 				if (_timeReset) {
@@ -481,6 +483,7 @@ public class Scheduler extends NamedObject {
 				// calculate the time the thread has to wait
 				if (timeToWait > 0) {
 					// there is a need to wait
+					/*
 					try {
 						_waitSynchCondition.awaitNanos(timeToWait);
 
@@ -489,8 +492,9 @@ public class Scheduler extends NamedObject {
 					} finally {
 						this._lock.unlock();
 					}
+					*/ //[CONCURRENT]
 				} else {
-					this._lock.unlock();
+					//this._lock.unlock(); //[CONCURRENT]
 				}
 				if (!_timeReset && _realTimeEventQueue.isEmpty()) {
 					break;
@@ -771,6 +775,7 @@ public class Scheduler extends NamedObject {
 			return;
 		}
 
+		/*
 		try {
 			// put the given Event wrapper into the thread-safe Event queue
 			_realTimeEventQueue.put(what);
@@ -783,10 +788,13 @@ public class Scheduler extends NamedObject {
 					"A Thread has to wait until space becomes available");
 
 		}
-		_lock.lock();
-		_waitSynchCondition.signal();// signal that a new real time Event is
+		*/
+		_realTimeEventQueue.add(what); //[CONCURRENT]
+		
+		//_lock.lock();
+		//_waitSynchCondition.signal();// signal that a new real time Event is
 		// available
-		_lock.unlock();
+		//_lock.unlock(); //[CONCURRENT]
 	}
 
 	/**
@@ -2543,11 +2551,11 @@ public class Scheduler extends NamedObject {
 	 * @author Felix Klueckmann
 	 */
 	protected void setExecutionSpeedRate(double executionSpeedRate) {
-		_lock.lock();
+		//_lock.lock(); //[CONCURRENT]
 		this._executionSpeedRate = executionSpeedRate;
 		this._timeReset = true;
-		_waitSynchCondition.signal();
-		_lock.unlock();
+		//_waitSynchCondition.signal();
+		//_lock.unlock(); //[CONCURRENT]
 	}
 
 	/**
@@ -2598,10 +2606,10 @@ public class Scheduler extends NamedObject {
 	 * @author Felix Klueckmann
 	 */
 	protected void signalStop() {
-		_lock.lock();
+		//_lock.lock(); //[CONCURRENT]
 		this._timeReset = true;
-		_waitSynchCondition.signal();
-		_lock.unlock();
+		//_waitSynchCondition.signal();
+		//_lock.unlock(); //[CONCURRENT]
 	}
 
 	/**

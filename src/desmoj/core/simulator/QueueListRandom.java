@@ -33,8 +33,8 @@ import def.Random; //[RANDOM]
  * permissions and limitations under the License.
  *
  */
-public class QueueListRandom<E extends Entity> extends QueueListStandard<E> implements
-		java.beans.PropertyChangeListener
+public class QueueListRandom<E extends Entity> extends QueueListStandard<E> /*implements
+		java.beans.PropertyChangeListener*/ //[PROCESS]
 	
 	{
     

@@ -31,10 +31,8 @@ package desmoj.core.simulator;
  * permissions and limitations under the License.
  *
  */
-public class QueueListFifo<E extends Entity> extends QueueListStandard<E> implements
-		java.beans.PropertyChangeListener
-	
-	{
+public class QueueListFifo<E extends Entity> extends QueueListStandard<E> /*implements
+		java.beans.PropertyChangeListener //[PROCESS]*/	{
 
 	/**
 	 * Constructs an empty <code>QueueListStandardFifo</code> with no reference to its

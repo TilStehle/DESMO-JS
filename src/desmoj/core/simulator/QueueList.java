@@ -39,7 +39,7 @@ import desmoj.core.simulator.QueueBased;
  * permissions and limitations under the License.
  *
  */
-public abstract class QueueList<E extends Entity> implements PropertyChangeListener, Iterable<E> {
+public abstract class QueueList<E extends Entity> implements /*PropertyChangeListener, [PROCESS]*/ Iterable<E> {
 
 	/**
 	 * The QueueBased object this queuelist serves as a container for.

@@ -27,6 +27,7 @@ import desmoj.core.report.OutputTypeEndToExport;
 import desmoj.core.report.Reporter;
 import desmoj.core.report.SimulationRunReporter;
 import desmoj.core.report.TraceNote;
+import jsweet.lang.Replace;
 
 /**
  * Experiment is the class that provides the infrastructure for running the
@@ -1108,7 +1109,8 @@ public class Experiment extends NamedObject {
 	 * @return String the experiment's output path
 	 */
 	public String getOutputPath() {
-		return new File(_pathName).getAbsolutePath();
+		//return new File(_pathName).getAbsolutePath();
+		return _pathName; //[JSWEET]
 	}
 
 	public List<List<String>> getOutputAppendixes() {
@@ -1417,7 +1419,8 @@ public class Experiment extends NamedObject {
 			frame.pack();
 			// frame.setSize(380,90);
 			frame.setVisible(true);
-			*/ //[GUI]
+			*/ 
+			showProgressBar(); //[GUI]
 		}
 
 		_status = RUNNING; // now checked to run
@@ -1456,6 +1459,26 @@ public class Experiment extends NamedObject {
                 }
 		    }
 	    }
+	}
+	
+	/**
+	 * Extracted progress bar code from proceed(), transpiled to not yet implemented comment in JS
+	 */
+	@Replace(value = "//Not yet implemented") //[GUI]
+	private void showProgressBar() {
+		/*
+		JFrame frame = new ExpProgressBar(this, _showProgressBarAutoclose);
+
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+
+		frame.pack();
+		// frame.setSize(380,90);
+		frame.setVisible(true);
+		*/ //Commented out because of missing classes in fragment
 	}
 
 	/*

@@ -80,7 +80,7 @@ public class SingleUnitTimeFormatter implements TimeFormatter {
 		timeConstants.put(TimeUnit.MICROSECONDS, microConstants);
 
 	}
-	*/
+	*/ //[JSWEET]
 	
 	/**
 	 * The TimeUnit that is used in this TimeFormatter
@@ -152,6 +152,8 @@ public class SingleUnitTimeFormatter implements TimeFormatter {
 	private String buildSingleUnitTimeString(long timeValue){
 		StringBuffer timeStringBuffer = new StringBuffer();
 		
+		timeStringBuffer.append(Long.toString(_myTimeUnit.convert(timeValue,_epsilon))); //[JSWEET]
+		
 		if (_myTimeUnit.compareTo(_epsilon) > 0) {
 			// unit is a coarser granularity than epsilon
 			timeStringBuffer.append('.');
@@ -170,7 +172,10 @@ public class SingleUnitTimeFormatter implements TimeFormatter {
 			timeStringBuffer.append(fractionTimeString);
 			
 		}
-		timeStringBuffer.insert(0, (String) Long.toString(_myTimeUnit.convert(timeValue,_epsilon)));
+		
+		// insert(int, String) isn't supported by JSweet, instead of inserting in front -> appending as first (see above)
+		//timeStringBuffer.insert(0, Long.toString(_myTimeUnit.convert(timeValue,_epsilon))); //[JSWEET]
+		
 		if (_writeUnit) {
 			//append the name of the time unit
 			timeStringBuffer.append(' ');

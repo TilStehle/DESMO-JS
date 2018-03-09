@@ -37,7 +37,7 @@ import desmoj.core.simulator.QueueBased;
  * permissions and limitations under the License.
  *
  */
-public abstract class QueueListStandard<E extends Entity> extends QueueList<E> implements PropertyChangeListener  {
+public abstract class QueueListStandard<E extends Entity> extends QueueList<E> /*implements PropertyChangeListener [PROCESS]*/  {
 
 	/**
 	 * An abbreviation to identify the sort of queueing discipline (like FIFO or
@@ -412,13 +412,14 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 	 *            java.beans.PropertyChangeEvent : The event specifying the
 	 *            property that has changed ans its old and new value.
 	 */
+	/*
 	public void propertyChange(java.beans.PropertyChangeEvent evt) {
 
 		// check if the property expected has changed
 		if (evt.getPropertyName() == "avail") {
 			// check if anybody is in the queue
 			if (!isEmpty()) {
-				/*
+				
 				// get the first process in the queue
 				SimProcess next = (SimProcess) first();
 
@@ -452,11 +453,12 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> i
 				if (wasBlocked) {
 					next.setBlocked(true);
 				}
-				*/ return; //[PROCESS]
+				return;
 			} // end if isEmpty()
 		} // end if propertyName == available
 
 	}
+	*/ //[PROCESS]
 
 	/**
 	 * Removes the first occurrence of the given Entity from the QueueList. Checks if the given
