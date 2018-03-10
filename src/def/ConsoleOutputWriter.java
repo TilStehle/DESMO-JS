@@ -22,15 +22,15 @@ public class ConsoleOutputWriter implements OutputWriter { //[FILE]
 	@Override
 	public void flush() throws IOException {
 		
-		System.out.println("=== CONSOLE OUTPUT WRITER || START ===");
-		System.out.println(buffer.toString());
-		System.out.println("=== CONSOLE OUTPUT WRITER || END ===");
+		//Flush
 	}
 
 	@Override
 	public void close() throws IOException {
-		// TODO Auto-generated method stub
 		
+		System.out.println("=== CONSOLE OUTPUT WRITER || START ===");
+		System.out.println(buffer.toString());
+		System.out.println("=== CONSOLE OUTPUT WRITER || END ===");
 	}
 
 }

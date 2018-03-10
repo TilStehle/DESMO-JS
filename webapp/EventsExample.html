@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Events Example</title>
+
+	<!-- .js for candy libraries -->
+	<script type="text/javascript" src="lib\random.js"></script>
+
+	<!-- .js for porting specific classes (def) -->
+	<script type="text/javascript" src="..\target\javascript\def\Color.js"></script>
+	<script type="text/javascript" src="..\target\javascript\def\ConsoleOutputWriter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\def\File.js"></script>
+	<script type="text/javascript" src="..\target\javascript\def\Integer.js"></script>
+	<!-- <script type="text/javascript" src="..\target\javascript\def\MersenneTwisterRandomGeneratorJS.js"></script> needs edited version-->
+	<script type="text/javascript" src="editedJS\MersenneTwisterRandomGeneratorJS.js"></script>
+	<script type="text/javascript" src="..\target\javascript\def\NumberValueHelper.js"></script>
+	<script type="text/javascript" src="..\target\javascript\def\Observable.js"></script>
+	<script type="text/javascript" src="..\target\javascript\def\Observer.js"></script>
+	<script type="text/javascript" src="..\target\javascript\def\OutputWriter.js"></script>
+	<!-- <script type="text/javascript" src="..\target\javascript\def\Random.js"></script> needs edited version-->
+	<script type="text/javascript" src="editedJS\Random.js"></script>
+	<script type="text/javascript" src="..\target\javascript\def\System.js"></script>
+	<script type="text/javascript" src="..\target\javascript\def\TimeUnit.js"></script>
+	
+	<!-- .js for core files -->
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\Condition.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\Entity.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\Event.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\EventAbstract.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\EventOf2Entities.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\EventOf3Entities.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\EventTreeList.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\Experiment.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ExperimentParameterManager.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ExternalEvent.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ExternalEventDebugOff.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ExternalEventDebugOn.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ExternalEventStop.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ExternalEventTraceOff.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ExternalEventTraceOn.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\Model.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ModelComponent.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ModelCondition.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ModelOptions.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ModelParameterManager.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\NameCatalog.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\NamedObject.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\Parameter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\ParameterManager.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\Queue.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\QueueBased.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\QueueListFifo.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\QueueListLifo.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\QueueListRandom.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\QueueListStandard.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\RandomizingEventTreeList.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\RealTimeEventWrapper.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\Reportable.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\Schedulable.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\Scheduler.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\SimClock.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\SingleUnitTimeFormatter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\TimeFormatter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\TimeInstant.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\TimeOperations.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\simulator\TimeSpan.js"></script>
+	
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\dist\ContDist.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\dist\ContDistExponential.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\dist\ContDistUniform.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\dist\ContDistWeibull.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\dist\Distribution.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\dist\DistributionManager.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\dist\LinearCongruentialRandomGenerator.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\dist\MersenneTwisterRandomGenerator.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\dist\NumericalDist.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\dist\UniformRandomGenerator.js"></script>
+	
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\exception\DESMOJException.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\exception\SimAbortedException.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\exception\SimFinishedException.js"></script>
+	
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\observer\Observer.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\observer\Subject.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\observer\SubjectAdministration.js"></script>
+	
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\AbstractChartData.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\AbstractChartDataTable.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\AbstractNumericalChartCanvas.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\AbstractNumericalCoorChartCanvas.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\AbstractNumericalCoorChartCanvasDouble.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\AbstractNumericalCoorChartCanvasLong.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\Canvas.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\CanvasCoordinateChart.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\CanvasCoordinateChartInterval.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\CanvasHistogramDouble.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\CanvasHistogramLong.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\CanvasTimeSeries.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\ChartDataHistogramDouble.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\ChartDataHistogramLong.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\html5chart\ChartDataTimeSeries.js"></script>
+	
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\AbstractTableFormatter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\ContDistExponReporter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\ContDistUniformReporter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\DebugFileOut.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\DistributionReporter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\ErrorFileOut.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\ErrorMessage.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\FileOutput.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\FileSystemAccess.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\HTMLDebugOutput.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\HTMLErrorOutput.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\HTMLReportOutput.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\HTMLTableChartFormatter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\HTMLTableFormatter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\HTMLTraceOutput.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\JavaScriptFormatter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\Message.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\MessageDistributor.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\MessageReceiver.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\ModelReporter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\OutputType.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\OutputTypeEndToExport.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\QueueReporter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\Reporter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\ReportFileOut.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\ReportManager.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\ReportMultRowsFileOut.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\SimulationRunReporter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\StandardReporter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\TableFormatter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\TableOutput.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\TableReporter.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\TraceFileOut.js"></script>
+	<script type="text/javascript" src="..\target\javascript\desmoj\core\report\TraceNote.js"></script>
+	
+	<!-- .js for test case files -->
+	<!-- <script type="text/javascript" src="..\target\javascript\demos\eventsexample\EventsExample.js"></script> contains main method-->
+	<script type="text/javascript" src="..\target\javascript\demos\eventsexample\ServiceEndEvent.js"></script>
+	<script type="text/javascript" src="..\target\javascript\demos\eventsexample\Truck.js"></script>
+	<script type="text/javascript" src="..\target\javascript\demos\eventsexample\TruckArrivalEvent.js"></script>
+	<script type="text/javascript" src="..\target\javascript\demos\eventsexample\TruckGeneratorEvent.js"></script>
+	<script type="text/javascript" src="..\target\javascript\demos\eventsexample\VanCarrier.js"></script>
+
+</head>
+<body>
+
+	<!-- .js for main file -->
+	<script type="text/javascript" src="..\target\javascript\demos\eventsexample\EventsExample.js"></script>
+
+</body>
+</html>

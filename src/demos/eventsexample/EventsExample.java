@@ -204,7 +204,7 @@ public class EventsExample extends Model {
 		model.connectToExperiment(exp);
 
 		// set experiment parameters
-		exp.setShowProgressBar(true);  // display a progress bar (or not)
+		exp.setShowProgressBar(false);  // display a progress bar (or not)
 		exp.stop(new TimeInstant(1500, TimeUnit.MINUTES));   // set end of simulation at 1500 minutes
 		exp.tracePeriod(new TimeInstant(0), new TimeInstant(100, TimeUnit.MINUTES));  // set the period of the trace
 		exp.debugPeriod(new TimeInstant(0), new TimeInstant(50, TimeUnit.MINUTES));   // and debug output
