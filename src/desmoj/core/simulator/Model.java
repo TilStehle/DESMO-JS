@@ -214,7 +214,7 @@ public abstract class Model extends Reportable {
         // initialize the submodels recursively
         doSubmodelInit();
         // reset the model and all submodels recursively
-        reset();
+        resetReportable();
 
     }
 
@@ -565,10 +565,10 @@ public abstract class Model extends Reportable {
      * Resets the statistic counters of this model and of all its registered
      * reportables. Also calls all submodels's <code>reset()</code> methods.
      */
-    public void reset() {
+    public void resetReportable() {
 
         // reset this model
-        super.reset(); // reset the own obs & resetAt variables
+        super.resetReportable(); // reset the own obs & resetAt variables
 
         // reset all reportables registered here
         if (_reportables.isEmpty())
@@ -576,7 +576,7 @@ public abstract class Model extends Reportable {
         else {
 
             for (Reportable r : _reportables) { // loop reportables
-                r.reset();
+                r.resetReportable();
                 // reset each registered
             }
 
@@ -588,7 +588,7 @@ public abstract class Model extends Reportable {
         else {
 
             for (Model m : _subModels) { // loop submodels
-                m.reset();
+                m.resetReportable();
                 // reset each registered
             }
 

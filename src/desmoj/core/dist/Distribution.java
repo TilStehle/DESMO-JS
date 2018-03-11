@@ -139,7 +139,7 @@ public abstract class Distribution extends desmoj.core.simulator.Reportable {
 			desmoj.core.dist.UniformRandomGenerator randomGenerator) {
 
 		this.randomGenerator = randomGenerator;
-		reset();
+		resetReportable();
 
 	}
 
@@ -217,7 +217,7 @@ public abstract class Distribution extends desmoj.core.simulator.Reportable {
 	 * to zero. The field antithetic keeps the value it has had before the
 	 * reset.
 	 */
-	public void reset() {
+	public void resetReportable() {
 
 		if (randomGenerator == null) {
 			try {
@@ -241,7 +241,7 @@ public abstract class Distribution extends desmoj.core.simulator.Reportable {
 		 * antithetic random number than it will do so after the reset, too.
 		 */
 
-		super.reset(); // reset the Reportable, too.
+		super.resetReportable(); // reset the Reportable, too.
 	}
 
 	/**
@@ -266,7 +266,7 @@ public abstract class Distribution extends desmoj.core.simulator.Reportable {
 		 * antithetic random number than it will do so after the reset, too.
 		 */
 
-		super.reset(); // reset the Reportable, too.
+		super.resetReportable(); // reset the Reportable, too.
 
 	}
 	
@@ -297,7 +297,7 @@ public abstract class Distribution extends desmoj.core.simulator.Reportable {
 	public void setAntithetic(boolean newAntiStatus) {
 
 		antithetic = newAntiStatus;
-		reset();
+		resetReportable();
 
 	}
 
@@ -332,7 +332,7 @@ public abstract class Distribution extends desmoj.core.simulator.Reportable {
 		randomGenerator.setSeed(newSeed); // well, the seed is passed on...
 		// ;-)
 		initialSeed = newSeed; // remember new seed for next reset()
-		reset(); // and do a reset of statistics to display when a new seed
+		resetReportable(); // and do a reset of statistics to display when a new seed
 		// was
 		// set
 

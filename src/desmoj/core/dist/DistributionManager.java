@@ -140,7 +140,7 @@ public class DistributionManager extends NamedObject {
 	public void resetAll() {
 
 		for (Distribution d : _distributions) {
-			d.reset();
+			d.resetReportable();
 		}
 	}
 

@@ -283,7 +283,7 @@ public abstract class Reportable extends ModelComponent {
      * simulation time this method was called will be stored and can be
      * retrieved using method <code>resetAt()</code>.
      */
-    public void reset() {
+    public void resetReportable() { //[RECURSION_ERROR]
 
         _observations = 0; // reset observations
         _lastReset = presentTime(); // register the reset time

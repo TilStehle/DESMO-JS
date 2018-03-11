@@ -100,7 +100,7 @@ public class Queue<E extends Entity> extends QueueBased implements Iterable<E>{
 
 		super(owner, name, showInReport, showInTrace); // create the QBased
 		// object
-		reset();
+		resetReportable();
 	    
 		// determine the queueing strategy
 	    switch (sortOrder) {
@@ -185,7 +185,7 @@ public class Queue<E extends Entity> extends QueueBased implements Iterable<E>{
 
 		super(owner, name, showInReport, showInTrace); // create the QBased
 		// object
-		reset();
+		resetReportable();
 
 		// make the queue with Fifo queueing discipline and unlimited capacity
 		_ql = new QueueListFifo<E>();
@@ -991,9 +991,9 @@ public class Queue<E extends Entity> extends QueueBased implements Iterable<E>{
 	 * objects. The counter for the entities refused to be enqueued will be
 	 * reset.
 	 */
-	public void reset() {
+	public void resetReportable() {
 
-		super.reset(); // reset of QueueBased
+		super.resetReportable(); // reset of QueueBased
 
 		_refused = 0;
 

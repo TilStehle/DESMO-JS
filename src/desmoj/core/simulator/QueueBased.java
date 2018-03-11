@@ -433,9 +433,9 @@ public abstract class QueueBased extends desmoj.core.simulator.Reportable implem
 	 * objects.
 	 */
 	@Override
-	public void reset() {
+	public void resetReportable() {
 
-		super.reset(); // reset of Reportable
+		super.resetReportable(); // reset of Reportable
 
 		_lastAcc = presentTime(); // time of last access is now
 		_minimumLength = _currentLength;

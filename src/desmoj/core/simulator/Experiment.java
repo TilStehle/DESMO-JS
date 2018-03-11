@@ -2391,7 +2391,7 @@ public class Experiment extends NamedObject {
 		if (initTime != null) {
 			clientScheduler.getSimClock().setInitTime(initTime);
 			if(!TimeInstant.isEqual(initTime,new TimeInstant(0))){
-			_client.reset();
+			_client.resetReportable();
 			}
 		} else {
 			clientScheduler.getSimClock().setTime(new TimeInstant(0));

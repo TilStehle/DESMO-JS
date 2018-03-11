@@ -29,7 +29,7 @@ public class MersenneTwisterRandomGeneratorJS implements UniformRandomGenerator{
 
 		Supplier<MT19937> s = def.random_js.random.Random.engines.mt19937;
 		MT19937 mt19937 = s.get();
-		mt19937.seed(42);
+		mt19937.seed(seed);
 		random = new def.random_js.random.Random(mt19937);
 		
 	}
