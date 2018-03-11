@@ -395,7 +395,7 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> /
 		}
 		
 		//if (e.equals(queuelist.getFirst())) // check for first element
-		if (e.equals(queuelist.get(0))) // check for first element //[JSWEET]
+		if (e.equalsEntity(queuelist.get(0))) // check for first element //[JSWEET] //[[RECURSION_ERROR]]
 		{
 			return null;
 		}
@@ -662,7 +662,7 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> /
 		}
 		
 		//if (e.equals(queuelist.getLast())) // check for last element
-		if (e.equals(queuelist.get(queuelist.size()-1))) // check for last element //[JSWEET]
+		if (e.equalsEntity(queuelist.get(queuelist.size()-1))) // check for last element //[JSWEET] //[[RECURSION_ERROR]]
 		{
 			return null;
 		}

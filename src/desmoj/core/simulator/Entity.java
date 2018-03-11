@@ -1751,8 +1751,14 @@ public abstract class Entity extends Schedulable {
         return c;
     }
     
+    /* Causes recursion in JavaScript execution
     @Override
-    public boolean equals(Object obj) { //[JSWEET]
+    public boolean equals(Object obj) { //[[RECURSION_ERROR]]
+    	return super.equals(obj);
+    }
+    */
+    
+    public boolean equalsEntity(Object obj) { //[RECURSION_ERROR]
     	return super.equals(obj);
     }
 }

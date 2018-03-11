@@ -131,8 +131,9 @@ var def;
          *
          */
         ConsoleOutputWriter.prototype.close = function () {
+            var output = this.buffer.str;
             console.info("=== CONSOLE OUTPUT WRITER || START ===");
-            console.info(/* toString */ this.buffer.str);
+            console.info(output);
             console.info("=== CONSOLE OUTPUT WRITER || END ===");
         };
         return ConsoleOutputWriter;
@@ -233,8 +234,8 @@ var def;
         };
         Observable.prototype.notifyObservers = function () {
             if (this.changed) {
-                for (var index1341 = 0; index1341 < this.obs.length; index1341++) {
-                    var observer = this.obs[index1341];
+                for (var index2691 = 0; index2691 < this.obs.length; index2691++) {
+                    var observer = this.obs[index2691];
                     {
                         observer.update(this, null);
                     }
@@ -243,8 +244,8 @@ var def;
         };
         Observable.prototype.notifyObserversWithArgument = function (arg) {
             if (this.changed) {
-                for (var index1342 = 0; index1342 < this.obs.length; index1342++) {
-                    var observer = this.obs[index1342];
+                for (var index2692 = 0; index2692 < this.obs.length; index2692++) {
+                    var observer = this.obs[index2692];
                     {
                         observer.update(this, arg);
                     }
@@ -1160,8 +1161,8 @@ var desmoj;
                  * the event type of the notify call. This is optional to distinguish the events and can be null
                  */
                 SubjectAdministration.prototype.notifyObservers = function (subject, eventObject) {
-                    for (var index1343 = 0; index1343 < this.observers.length; index1343++) {
-                        var observer_2 = this.observers[index1343];
+                    for (var index2693 = 0; index2693 < this.observers.length; index2693++) {
+                        var observer_2 = this.observers[index2693];
                         {
                             observer_2.update(subject, eventObject);
                         }
@@ -1437,8 +1438,8 @@ var desmoj;
                             return false;
                     } return true; })(writtenSet, this._functionsToWrite))) {
                         var buffFunctionsToWrite = ([]);
-                        for (var index1344 = 0; index1344 < this._functionsToWrite.length; index1344++) {
-                            var func = this._functionsToWrite[index1344];
+                        for (var index2694 = 0; index2694 < this._functionsToWrite.length; index2694++) {
+                            var func = this._functionsToWrite[index2694];
                             {
                                 /* add */ (function (s, e) { if (s.indexOf(e) == -1) {
                                     s.push(e);
@@ -1449,8 +1450,8 @@ var desmoj;
                                 } })(buffFunctionsToWrite, func);
                             }
                         }
-                        for (var index1345 = 0; index1345 < buffFunctionsToWrite.length; index1345++) {
-                            var func = buffFunctionsToWrite[index1345];
+                        for (var index2695 = 0; index2695 < buffFunctionsToWrite.length; index2695++) {
+                            var func = buffFunctionsToWrite[index2695];
                             {
                                 if (!(writtenSet.indexOf((func)) >= 0)) {
                                     switch ((func)) {
@@ -2841,8 +2842,8 @@ var desmoj;
                      */
                     AbstractChartDataTable.prototype.getHighestDataValue = function () {
                         var max = null;
-                        for (var index1346 = 0; index1346 < this.table.length; index1346++) {
-                            var entry = this.table[index1346];
+                        for (var index2696 = 0; index2696 < this.table.length; index2696++) {
+                            var entry = this.table[index2696];
                             {
                                 if ((max == null || def.NumberValueHelper.doubleValue(entry) > def.NumberValueHelper.doubleValue(max)) && def.NumberValueHelper.doubleValue(entry) !== (1.0 / 0.0))
                                     max = entry;
@@ -6966,8 +6967,8 @@ var desmoj;
                     if ((reportables.length == 0))
                         return _this;
                     var repoBuff;
-                    for (var index1347 = 0; index1347 < reportables.length; index1347++) {
-                        var r = reportables[index1347];
+                    for (var index2697 = 0; index2697 < reportables.length; index2697++) {
+                        var r = reportables[index2697];
                         {
                             if (r != null) {
                                 repoBuff = r.getReporter();
@@ -7969,8 +7970,8 @@ var desmoj;
                  * resetting all distribution statistics at the same time.
                  */
                 DistributionManager.prototype.newSeedAll = function () {
-                    for (var index1348 = 0; index1348 < this._distributions.length; index1348++) {
-                        var d = this._distributions[index1348];
+                    for (var index2698 = 0; index2698 < this._distributions.length; index2698++) {
+                        var d = this._distributions[index2698];
                         {
                             d.setSeed(this.nextSeed());
                         }
@@ -8002,8 +8003,8 @@ var desmoj;
                  * individual reset method.
                  */
                 DistributionManager.prototype.resetAll = function () {
-                    for (var index1349 = 0; index1349 < this._distributions.length; index1349++) {
-                        var d = this._distributions[index1349];
+                    for (var index2699 = 0; index2699 < this._distributions.length; index2699++) {
+                        var d = this._distributions[index2699];
                         {
                             d.resetReportable();
                         }
@@ -8017,8 +8018,8 @@ var desmoj;
                  * boolean : The new status of antithetic mode
                  */
                 DistributionManager.prototype.setAntitheticAll = function (antitheticMode) {
-                    for (var index1350 = 0; index1350 < this._distributions.length; index1350++) {
-                        var d = this._distributions[index1350];
+                    for (var index2700 = 0; index2700 < this._distributions.length; index2700++) {
+                        var d = this._distributions[index2700];
                         {
                             d.setAntithetic(antitheticMode);
                         }
@@ -9055,8 +9056,8 @@ var desmoj;
                     }
                     ;
                     this._messMan = new desmoj.core.report.MessageDistributor();
-                    for (var index1351 = 0; index1351 < debugOutputs.length; index1351++) {
-                        var debugOutputType = debugOutputs[index1351];
+                    for (var index2701 = 0; index2701 < debugOutputs.length; index2701++) {
+                        var debugOutputType = debugOutputs[index2701];
                         {
                             try {
                                 var debugOType = eval((debugOutputType != null) ? debugOutputType : Experiment.DEFAULT_DEBUG_OUTPUT_TYPE);
@@ -9074,8 +9075,8 @@ var desmoj;
                             ;
                         }
                     }
-                    for (var index1352 = 0; index1352 < reportOutputs.length; index1352++) {
-                        var reportOutputType = reportOutputs[index1352];
+                    for (var index2702 = 0; index2702 < reportOutputs.length; index2702++) {
+                        var reportOutputType = reportOutputs[index2702];
                         {
                             try {
                                 var reportOType = eval((reportOutputType != null) ? reportOutputType : Experiment.DEFAULT_REPORT_OUTPUT_TYPE);
@@ -9092,8 +9093,8 @@ var desmoj;
                             ;
                         }
                     }
-                    for (var index1353 = 0; index1353 < errorOutputs.length; index1353++) {
-                        var errorOutputType = errorOutputs[index1353];
+                    for (var index2703 = 0; index2703 < errorOutputs.length; index2703++) {
+                        var errorOutputType = errorOutputs[index2703];
                         {
                             try {
                                 var errorOType = eval((errorOutputType != null) ? errorOutputType : Experiment.DEFAULT_ERROR_OUTPUT_TYPE);
@@ -9110,8 +9111,8 @@ var desmoj;
                             ;
                         }
                     }
-                    for (var index1354 = 0; index1354 < traceOutputs.length; index1354++) {
-                        var traceOutputType = traceOutputs[index1354];
+                    for (var index2704 = 0; index2704 < traceOutputs.length; index2704++) {
+                        var traceOutputType = traceOutputs[index2704];
                         {
                             try {
                                 var traceOType = eval((traceOutputType != null) ? traceOutputType : Experiment.DEFAULT_TRACE_OUTPUT_TYPE);
@@ -9336,8 +9337,8 @@ var desmoj;
                         return;
                     }
                     if (this._traceOutput != null) {
-                        for (var index1355 = 0; index1355 < this._traceOutput.length; index1355++) {
-                            var trc = this._traceOutput[index1355];
+                        for (var index2705 = 0; index2705 < this._traceOutput.length; index2705++) {
+                            var trc = this._traceOutput[index2705];
                             {
                                 if (trc != null && (trc["__interfaces"] != null && trc["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0 || trc.constructor != null && trc.constructor["__interfaces"] != null && trc.constructor["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0)) {
                                     trc["export"](this._pathName, this.getName());
@@ -9346,8 +9347,8 @@ var desmoj;
                         }
                     }
                     if (this._debugOutput != null) {
-                        for (var index1356 = 0; index1356 < this._debugOutput.length; index1356++) {
-                            var dbg = this._debugOutput[index1356];
+                        for (var index2706 = 0; index2706 < this._debugOutput.length; index2706++) {
+                            var dbg = this._debugOutput[index2706];
                             {
                                 if (dbg != null && (dbg["__interfaces"] != null && dbg["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0 || dbg.constructor != null && dbg.constructor["__interfaces"] != null && dbg.constructor["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0)) {
                                     dbg["export"](this._pathName, this.getName());
@@ -9356,8 +9357,8 @@ var desmoj;
                         }
                     }
                     if (this._errorOutput != null) {
-                        for (var index1357 = 0; index1357 < this._errorOutput.length; index1357++) {
-                            var err = this._errorOutput[index1357];
+                        for (var index2707 = 0; index2707 < this._errorOutput.length; index2707++) {
+                            var err = this._errorOutput[index2707];
                             {
                                 if (err != null && (err["__interfaces"] != null && err["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0 || err.constructor != null && err.constructor["__interfaces"] != null && err.constructor["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0)) {
                                     err["export"](this._pathName, this.getName());
@@ -9366,8 +9367,8 @@ var desmoj;
                         }
                     }
                     if (this._reportOutput != null) {
-                        for (var index1358 = 0; index1358 < this._reportOutput.length; index1358++) {
-                            var rpt = this._reportOutput[index1358];
+                        for (var index2708 = 0; index2708 < this._reportOutput.length; index2708++) {
+                            var rpt = this._reportOutput[index2708];
                             {
                                 if (rpt != null && (rpt["__interfaces"] != null && rpt["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0 || rpt.constructor != null && rpt.constructor["__interfaces"] != null && rpt.constructor["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0)) {
                                     rpt["export"](this._pathName, this.getName());
@@ -9376,12 +9377,12 @@ var desmoj;
                         }
                     }
                     this._status = Experiment.ABORTED;
-                    for (var index1359 = 0; index1359 < this._registryOutputType.length; index1359++) {
-                        var o = this._registryOutputType[index1359];
+                    for (var index2709 = 0; index2709 < this._registryOutputType.length; index2709++) {
+                        var o = this._registryOutputType[index2709];
                         o.close();
                     }
-                    for (var index1360 = 0; index1360 < this._registryFileOutput.length; index1360++) {
-                        var f = this._registryFileOutput[index1360];
+                    for (var index2710 = 0; index2710 < this._registryFileOutput.length; index2710++) {
+                        var f = this._registryFileOutput[index2710];
                         f.close();
                     }
                 };
@@ -9448,32 +9449,32 @@ var desmoj;
                 Experiment.prototype.getOutputAppendixes = function () {
                     var appendixes = ([]);
                     var debugAppendixes = ([]);
-                    for (var index1361 = 0; index1361 < this._debugOutput.length; index1361++) {
-                        var o = this._debugOutput[index1361];
+                    for (var index2711 = 0; index2711 < this._debugOutput.length; index2711++) {
+                        var o = this._debugOutput[index2711];
                         {
                             /* add */ (debugAppendixes.push(o.getAppendix()) > 0);
                         }
                     }
                     /* add */ (appendixes.push(debugAppendixes) > 0);
                     var traceAppendixes = ([]);
-                    for (var index1362 = 0; index1362 < this._debugOutput.length; index1362++) {
-                        var o = this._debugOutput[index1362];
+                    for (var index2712 = 0; index2712 < this._debugOutput.length; index2712++) {
+                        var o = this._debugOutput[index2712];
                         {
                             /* add */ (traceAppendixes.push(o.getAppendix()) > 0);
                         }
                     }
                     /* add */ (appendixes.push(traceAppendixes) > 0);
                     var errorAppendixes = ([]);
-                    for (var index1363 = 0; index1363 < this._debugOutput.length; index1363++) {
-                        var o = this._debugOutput[index1363];
+                    for (var index2713 = 0; index2713 < this._debugOutput.length; index2713++) {
+                        var o = this._debugOutput[index2713];
                         {
                             /* add */ (errorAppendixes.push(o.getAppendix()) > 0);
                         }
                     }
                     /* add */ (appendixes.push(errorAppendixes) > 0);
                     var reportAppendixes = ([]);
-                    for (var index1364 = 0; index1364 < this._debugOutput.length; index1364++) {
-                        var o = this._debugOutput[index1364];
+                    for (var index2714 = 0; index2714 < this._debugOutput.length; index2714++) {
+                        var o = this._debugOutput[index2714];
                         {
                             /* add */ (reportAppendixes.push(o.getAppendix()) > 0);
                         }
@@ -9919,8 +9920,8 @@ var desmoj;
                         return;
                     }
                     reporters = m.report();
-                    for (var index1365 = 0; index1365 < reporters.length; index1365++) {
-                        var r = reporters[index1365];
+                    for (var index2715 = 0; index2715 < reporters.length; index2715++) {
+                        var r = reporters[index2715];
                         {
                             this._messMan.receive$desmoj_core_report_Reporter(r);
                         }
@@ -10423,8 +10424,8 @@ var desmoj;
                     if (suffix == null)
                         suffix = "";
                     var nameBuffer = null;
-                    for (var index1366 = 0; index1366 < this._registryFileOutput.length; index1366++) {
-                        var f = this._registryFileOutput[index1366];
+                    for (var index2716 = 0; index2716 < this._registryFileOutput.length; index2716++) {
+                        var f = this._registryFileOutput[index2716];
                         {
                             nameBuffer = f.getFileName();
                             f.close();
@@ -10463,8 +10464,8 @@ var desmoj;
                         suffix = "";
                     this.report$desmoj_core_simulator_Model(this._client);
                     var nameBuffer = null;
-                    for (var index1367 = 0; index1367 < this._registryFileOutput.length; index1367++) {
-                        var f = this._registryFileOutput[index1367];
+                    for (var index2717 = 0; index2717 < this._registryFileOutput.length; index2717++) {
+                        var f = this._registryFileOutput[index2717];
                         {
                             nameBuffer = f.getFileName();
                             f.close();
@@ -11342,8 +11343,8 @@ var desmoj;
                         return;
                     }
                     var notes = who.getEventNotes();
-                    for (var index1368 = 0; index1368 < notes.length; index1368++) {
-                        var note = notes[index1368];
+                    for (var index2718 = 0; index2718 < notes.length; index2718++) {
+                        var note = notes[index2718];
                         {
                             this.evList.remove(note);
                             note.setTime(this.presentTime());
@@ -11365,8 +11366,8 @@ var desmoj;
                         return;
                     }
                     var notes = who.getEventNotes();
-                    for (var index1369 = 0; index1369 < notes.length; index1369++) {
-                        var note = notes[index1369];
+                    for (var index2719 = 0; index2719 < notes.length; index2719++) {
+                        var note = notes[index2719];
                         {
                             this.evList.remove(note);
                             note.setTime(desmoj.core.simulator.TimeOperations.add$desmoj_core_simulator_TimeInstant$desmoj_core_simulator_TimeSpan(this.presentTime(), dt));
@@ -11438,8 +11439,8 @@ var desmoj;
                         return;
                     }
                     var notes = (who.getEventNotes().slice(0));
-                    for (var index1370 = 0; index1370 < notes.length; index1370++) {
-                        var note = notes[index1370];
+                    for (var index2720 = 0; index2720 < notes.length; index2720++) {
+                        var note = notes[index2720];
                         {
                             this.evList.remove(note);
                             note.setTime(time);
@@ -12289,7 +12290,7 @@ var desmoj;
                     if (!this.contains(e)) {
                         return null;
                     }
-                    if (e.equals(/* get */ this.queuelist[0])) {
+                    if (e.equalsEntity(/* get */ this.queuelist[0])) {
                         return null;
                     }
                     return this.queuelist[this.queuelist.indexOf(e) - 1];
@@ -12428,7 +12429,7 @@ var desmoj;
                     if (!this.contains(e)) {
                         return null;
                     }
-                    if (e.equals(/* get */ this.queuelist[this.queuelist.length - 1])) {
+                    if (e.equalsEntity(/* get */ this.queuelist[this.queuelist.length - 1])) {
                         return null;
                     }
                     return this.queuelist[this.queuelist.indexOf(e) + 1];
@@ -13230,8 +13231,8 @@ var desmoj;
                      */
                     /*private*/ CanvasTimeSeries.prototype.getMaxDataValue = function () {
                         var max = 0;
-                        for (var index1371 = 0; index1371 < this._timeSeries.length; index1371++) {
-                            var timeSeriesData = this._timeSeries[index1371];
+                        for (var index2721 = 0; index2721 < this._timeSeries.length; index2721++) {
+                            var timeSeriesData = this._timeSeries[index2721];
                             {
                                 if (max < timeSeriesData.getHighestDataValue()) {
                                     max = timeSeriesData.getHighestDataValue();
@@ -13249,8 +13250,8 @@ var desmoj;
                      */
                     /*private*/ CanvasTimeSeries.prototype.getMaxTimeValue = function () {
                         var max = 0;
-                        for (var index1372 = 0; index1372 < this._timeSeries.length; index1372++) {
-                            var timeSeriesData = this._timeSeries[index1372];
+                        for (var index2722 = 0; index2722 < this._timeSeries.length; index2722++) {
+                            var timeSeriesData = this._timeSeries[index2722];
                             {
                                 if (timeSeriesData.getValidTo() > max) {
                                     max = timeSeriesData.getValidTo();
@@ -13272,8 +13273,8 @@ var desmoj;
                         }
                         else {
                             var min = Number.MAX_VALUE;
-                            for (var index1373 = 0; index1373 < this._timeSeries.length; index1373++) {
-                                var timeSeriesData = this._timeSeries[index1373];
+                            for (var index2723 = 0; index2723 < this._timeSeries.length; index2723++) {
+                                var timeSeriesData = this._timeSeries[index2723];
                                 {
                                     if (timeSeriesData.getValidFrom() < min) {
                                         min = timeSeriesData.getValidFrom();
@@ -15252,8 +15253,8 @@ var desmoj;
                     this._myExperiment = exp;
                     this._myExperiment.registerModel(this);
                     if (!(this._subModels.length == 0)) {
-                        for (var index1374 = 0; index1374 < this._subModels.length; index1374++) {
-                            var m = this._subModels[index1374];
+                        for (var index2724 = 0; index2724 < this._subModels.length; index2724++) {
+                            var m = this._subModels[index2724];
                             {
                                 m.setConnectedExperiment(exp);
                             }
@@ -15287,8 +15288,8 @@ var desmoj;
                     if (!this.hasSubModels())
                         return;
                     else {
-                        for (var index1375 = 0; index1375 < this._subModels.length; index1375++) {
-                            var m = this._subModels[index1375];
+                        for (var index2725 = 0; index2725 < this._subModels.length; index2725++) {
+                            var m = this._subModels[index2725];
                             {
                                 m.init();
                                 m.doSubmodelInit();
@@ -15306,8 +15307,8 @@ var desmoj;
                     if (!this.hasSubModels())
                         return;
                     else {
-                        for (var index1376 = 0; index1376 < this._subModels.length; index1376++) {
-                            var m = this._subModels[index1376];
+                        for (var index2726 = 0; index2726 < this._subModels.length; index2726++) {
+                            var m = this._subModels[index2726];
                             {
                                 m.doInitialSchedules();
                                 m.doSubmodelSchedules();
@@ -15343,8 +15344,8 @@ var desmoj;
                         m.entries = []; for (var i = 0; i < m.entries.length; i++)
                         r.push(m.entries[i].value); return r; })(this._entityMap));
                     if (includeSubmodels) {
-                        for (var index1377 = 0; index1377 < this._subModels.length; index1377++) {
-                            var submodel = this._subModels[index1377];
+                        for (var index2727 = 0; index2727 < this._subModels.length; index2727++) {
+                            var submodel = this._subModels[index2727];
                             {
                                 /* addAll */ (function (l1, l2) { return l1.push.apply(l1, l2); })(list, submodel.getEntities(true));
                             }
@@ -15513,20 +15514,20 @@ var desmoj;
                 Model.prototype.report = function () {
                     var repMan = new desmoj.core.report.ReportManager(this.getName() + "_ReportManager");
                     repMan.register(this.createDefaultReporter());
-                    for (var index1378 = 0; index1378 < this._reportables.length; index1378++) {
-                        var r = this._reportables[index1378];
+                    for (var index2728 = 0; index2728 < this._reportables.length; index2728++) {
+                        var r = this._reportables[index2728];
                         {
                             if (r.reportIsOn())
                                 repMan.register(r.getReporter());
                         }
                     }
                     var subReporters;
-                    for (var index1379 = 0; index1379 < this._subModels.length; index1379++) {
-                        var m = this._subModels[index1379];
+                    for (var index2729 = 0; index2729 < this._subModels.length; index2729++) {
+                        var m = this._subModels[index2729];
                         {
                             subReporters = m.report();
-                            for (var index1380 = 0; index1380 < subReporters.length; index1380++) {
-                                var r = subReporters[index1380];
+                            for (var index2730 = 0; index2730 < subReporters.length; index2730++) {
+                                var r = subReporters[index2730];
                                 {
                                     repMan.addLast(r);
                                 }
@@ -15544,8 +15545,8 @@ var desmoj;
                     if ((this._reportables.length == 0))
                         return;
                     else {
-                        for (var index1381 = 0; index1381 < this._reportables.length; index1381++) {
-                            var r = this._reportables[index1381];
+                        for (var index2731 = 0; index2731 < this._reportables.length; index2731++) {
+                            var r = this._reportables[index2731];
                             {
                                 r.resetReportable();
                             }
@@ -15554,8 +15555,8 @@ var desmoj;
                     if ((this._subModels.length == 0))
                         return;
                     else {
-                        for (var index1382 = 0; index1382 < this._subModels.length; index1382++) {
-                            var m = this._subModels[index1382];
+                        for (var index2732 = 0; index2732 < this._subModels.length; index2732++) {
+                            var m = this._subModels[index2732];
                             {
                                 m.resetReportable();
                             }
@@ -16081,8 +16082,8 @@ var desmoj;
                     var newNote = null;
                     var oldNotes = (this._schedule.slice(0));
                     var newNotes = ([]);
-                    for (var index1383 = 0; index1383 < oldNotes.length; index1383++) {
-                        var oldNote = oldNotes[index1383];
+                    for (var index2733 = 0; index2733 < oldNotes.length; index2733++) {
+                        var oldNote = oldNotes[index2733];
                         {
                             newNote = oldNote.copy(this.current());
                             newNote.setTime(desmoj.core.simulator.TimeOperations.add$desmoj_core_simulator_TimeInstant$desmoj_core_simulator_TimeSpan(oldNote.getTime(), dt));
@@ -16106,8 +16107,8 @@ var desmoj;
                             }
                         }
                     }
-                    for (var index1384 = 0; index1384 < newNotes.length; index1384++) {
-                        var ev = newNotes[index1384];
+                    for (var index2734 = 0; index2734 < newNotes.length; index2734++) {
+                        var ev = newNotes[index2734];
                         {
                             this.getModel().getExperiment().getScheduler().evList.insert(ev);
                         }
@@ -18296,8 +18297,8 @@ var demos;
                  */
                 Entity.prototype.getScheduledEvents = function () {
                     var list = ([]);
-                    for (var index1385 = 0; index1385 < this._schedule.length; index1385++) {
-                        var note = this._schedule[index1385];
+                    for (var index2735 = 0; index2735 < this._schedule.length; index2735++) {
+                        var note = this._schedule[index2735];
                         {
                             /* add */ (list.push(note.getEvent()) > 0);
                         }
@@ -19057,12 +19058,7 @@ var demos;
                     c._identNumber = this.getModel().linkWithIdentNumber(c);
                     return c;
                 };
-                /**
-                 *
-                 * @param {*} obj
-                 * @return {boolean}
-                 */
-                Entity.prototype.equals = function (obj) {
+                Entity.prototype.equalsEntity = function (obj) {
                     return (function (o1, o2) { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
