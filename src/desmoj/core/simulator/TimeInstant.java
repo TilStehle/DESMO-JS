@@ -77,7 +77,7 @@ public final class TimeInstant implements Comparable<TimeInstant> {
 		// System.out.println(time + " " + unit);
 		// System.out.println("Format: "
 		// + new SimpleDateFormat().format(new Date(time)));
-		if (unit.compareTo(TimeOperations.getEpsilon()) < 0) {
+		if (unit.compareTo2(TimeOperations.getEpsilon()) < 0) { //[ENUM]
 			// unit is a finer granularity than epsilon
 			if (TimeOperations.getStartTime() != null) {// Start time has been
 				// set
@@ -160,7 +160,7 @@ public final class TimeInstant implements Comparable<TimeInstant> {
         // System.out.println(time + " " + unit);
         // System.out.println("Format: "
         // + new SimpleDateFormat().format(new Date(time)));
-        if (unit.compareTo(TimeOperations.getEpsilon()) < 0) {
+        if (unit.compareTo2(TimeOperations.getEpsilon()) < 0) { //[ENUM]
             // unit is a finer granularity than epsilon
             if (TimeOperations.getStartTime() != null) {// Start time has been
                 // set
@@ -309,7 +309,7 @@ public final class TimeInstant implements Comparable<TimeInstant> {
 	 *         would positively overflow.
 	 */
 	public long getTimeRounded(TimeUnit unit) {
-		if (unit.compareTo(TimeOperations.getEpsilon()) > 0) {
+		if (unit.compareTo2(TimeOperations.getEpsilon()) > 0) { //[ENUM]
 			// unit has a coarser granularity than epsilon
 			long halfAUnitInEpsilon = TimeOperations.getEpsilon().convert(1,
 					unit) / 2;

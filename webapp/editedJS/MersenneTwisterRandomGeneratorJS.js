@@ -21,7 +21,7 @@ var def;
             var s = (Random.engines.mt19937);
             var mt19937 = (function (target) { return (typeof target === 'function') ? target() : target.get(); })(s);
             mt19937.seed(42);
-            this.random = new andom(mt19937);
+            this.random = new Random(mt19937);
         };
         return MersenneTwisterRandomGeneratorJS;
     }());

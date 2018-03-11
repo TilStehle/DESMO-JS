@@ -1,5 +1,8 @@
+compiler.bundle=true
+compiler.bundlesDirectory=target/bundle
 compiler.javascriptFolder=target/javascript
 compiler.moduleKind=none
 compiler.profiles=default
+compiler.sourceExcludeFilter=
 compiler.typescriptFolder=target/typescript
 eclipse.preferences.version=1

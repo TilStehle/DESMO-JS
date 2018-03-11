@@ -291,4 +291,15 @@ public enum TimeUnit {
      */
     abstract int excessNanos(long d, long m);
 
+    /**
+     * Implementation of compareTo() method in enum types. 
+     * compareTo() is not transpiled by JSweet and therefore has to be reimplemented
+     * Method name has to be different since compareTo() in enums is final and can't be overwritten
+     * @param u
+     * @return distance of this to constant u
+     */
+    public int compareTo2(TimeUnit u) { //[ENUM]
+	   	
+    	return this.ordinal() - u.ordinal();
+	}
 }

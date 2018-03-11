@@ -382,7 +382,7 @@ public final class TimeSpan implements Comparable<TimeSpan> {
 	 *         positively overflow.
 	 */
 	public long getTimeRounded(TimeUnit unit) {		
-		if(unit.compareTo(TimeOperations.getEpsilon())>0){
+		if(unit.compareTo2(TimeOperations.getEpsilon())>0){
 			//unit has a coarser granularity than epsilon
 			long halfAUnitInEpsilon = TimeOperations.getEpsilon().convert(1, unit) / 2;
 			long durationInUnitTruncated = getTimeTruncated(unit);

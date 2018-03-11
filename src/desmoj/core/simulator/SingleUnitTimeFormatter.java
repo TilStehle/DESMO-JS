@@ -154,7 +154,7 @@ public class SingleUnitTimeFormatter implements TimeFormatter {
 		
 		timeStringBuffer.append(Long.toString(_myTimeUnit.convert(timeValue,_epsilon))); //[JSWEET]
 		
-		if (_myTimeUnit.compareTo(_epsilon) > 0) {
+		if (_myTimeUnit.compareTo2(_epsilon) > 0) { //[ENUM]
 			// unit is a coarser granularity than epsilon
 			timeStringBuffer.append('.');
 			//append seperator
