@@ -5,7 +5,7 @@ package desmoj.core.report;
 import java.io.IOException;
 import java.io.Writer;
 
-import def.ConsoleOutputWriter;
+import def.BrowserOutputWriter;
 import def.OutputWriter;
 
 /**
@@ -46,7 +46,7 @@ public class FileOutput {
         @Override
         public OutputWriter createWriter(String filename) throws IOException {
             //return new FileWriter(filename);
-        	return new ConsoleOutputWriter(filename); //[FILE]
+        	return new BrowserOutputWriter(filename); //[FILE]
         }
     };
     

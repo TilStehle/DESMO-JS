@@ -3,12 +3,14 @@ package def;
 import java.io.IOException;
 import java.lang.System;
 
-public class ConsoleOutputWriter implements OutputWriter { //[FILE]
+import jsweet.dom.Window;
+
+public class BrowserOutputWriter implements OutputWriter { //[FILE]
 
 	private String fileName;
 	private StringBuffer buffer;
 	
-	public ConsoleOutputWriter(String filename) {
+	public BrowserOutputWriter(String filename) {
 		this.fileName = filename;
 		this.buffer = new StringBuffer();
 	}

@@ -123,7 +123,7 @@ public class HTMLTableChartFormatter extends AbstractTableFormatter {
 		out.writeln("<font size=\"-1\"><a href=\"#top\">top</a></font><p></p>");
 	
 		out.writeln("<font size=\"-2\">created using <a href=\"http://www.desmoj.de\">"
-				+ "DESMO-J</A> Version " 
+				+ "DESMO-JS</A> Version " 
 				+ Experiment.getDesmoJVersion() + " at "
 				//+ new java.util.Date()
 				+ new Date() //[JSWEET]

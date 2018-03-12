@@ -38,7 +38,7 @@ public class HTMLTableFormatter extends AbstractTableFormatter {
 		if (tableOpen)
 			closeTable();
 		out.writeln("<FONT SIZE=-2>created using <A HREF=http://www.desmoj.de>"
-				+ "DESMO-J</A> Version " + Experiment.getDesmoJVersion() + " at "
+				+ "DESMO-JS</A> Version " + Experiment.getDesmoJVersion() + " at "
 				+ new Date() + " - DESMO-J is licensed under " //[JSWEET]
 				+ Experiment.getDesmoJLicense(true)
 				+ "</FONT>");
