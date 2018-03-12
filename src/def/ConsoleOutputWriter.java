@@ -3,8 +3,6 @@ package def;
 import java.io.IOException;
 import java.lang.System;
 
-import def.dom.Window;
-
 public class ConsoleOutputWriter implements OutputWriter { //[FILE]
 
 	private String fileName;

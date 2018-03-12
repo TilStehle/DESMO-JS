@@ -234,8 +234,8 @@ var def;
         };
         Observable.prototype.notifyObservers = function () {
             if (this.changed) {
-                for (var index2691 = 0; index2691 < this.obs.length; index2691++) {
-                    var observer = this.obs[index2691];
+                for (var index256 = 0; index256 < this.obs.length; index256++) {
+                    var observer = this.obs[index256];
                     {
                         observer.update(this, null);
                     }
@@ -244,8 +244,8 @@ var def;
         };
         Observable.prototype.notifyObserversWithArgument = function (arg) {
             if (this.changed) {
-                for (var index2692 = 0; index2692 < this.obs.length; index2692++) {
-                    var observer = this.obs[index2692];
+                for (var index257 = 0; index257 < this.obs.length; index257++) {
+                    var observer = this.obs[index257];
                     {
                         observer.update(this, arg);
                     }
@@ -1161,8 +1161,8 @@ var desmoj;
                  * the event type of the notify call. This is optional to distinguish the events and can be null
                  */
                 SubjectAdministration.prototype.notifyObservers = function (subject, eventObject) {
-                    for (var index2693 = 0; index2693 < this.observers.length; index2693++) {
-                        var observer_2 = this.observers[index2693];
+                    for (var index258 = 0; index258 < this.observers.length; index258++) {
+                        var observer_2 = this.observers[index258];
                         {
                             observer_2.update(subject, eventObject);
                         }
@@ -1438,8 +1438,8 @@ var desmoj;
                             return false;
                     } return true; })(writtenSet, this._functionsToWrite))) {
                         var buffFunctionsToWrite = ([]);
-                        for (var index2694 = 0; index2694 < this._functionsToWrite.length; index2694++) {
-                            var func = this._functionsToWrite[index2694];
+                        for (var index259 = 0; index259 < this._functionsToWrite.length; index259++) {
+                            var func = this._functionsToWrite[index259];
                             {
                                 /* add */ (function (s, e) { if (s.indexOf(e) == -1) {
                                     s.push(e);
@@ -1450,8 +1450,8 @@ var desmoj;
                                 } })(buffFunctionsToWrite, func);
                             }
                         }
-                        for (var index2695 = 0; index2695 < buffFunctionsToWrite.length; index2695++) {
-                            var func = buffFunctionsToWrite[index2695];
+                        for (var index260 = 0; index260 < buffFunctionsToWrite.length; index260++) {
+                            var func = buffFunctionsToWrite[index260];
                             {
                                 if (!(writtenSet.indexOf((func)) >= 0)) {
                                     switch ((func)) {
@@ -2842,8 +2842,8 @@ var desmoj;
                      */
                     AbstractChartDataTable.prototype.getHighestDataValue = function () {
                         var max = null;
-                        for (var index2696 = 0; index2696 < this.table.length; index2696++) {
-                            var entry = this.table[index2696];
+                        for (var index261 = 0; index261 < this.table.length; index261++) {
+                            var entry = this.table[index261];
                             {
                                 if ((max == null || def.NumberValueHelper.doubleValue(entry) > def.NumberValueHelper.doubleValue(max)) && def.NumberValueHelper.doubleValue(entry) !== (1.0 / 0.0))
                                     max = entry;
@@ -6967,8 +6967,8 @@ var desmoj;
                     if ((reportables.length == 0))
                         return _this;
                     var repoBuff;
-                    for (var index2697 = 0; index2697 < reportables.length; index2697++) {
-                        var r = reportables[index2697];
+                    for (var index262 = 0; index262 < reportables.length; index262++) {
+                        var r = reportables[index262];
                         {
                             if (r != null) {
                                 repoBuff = r.getReporter();
@@ -7970,8 +7970,8 @@ var desmoj;
                  * resetting all distribution statistics at the same time.
                  */
                 DistributionManager.prototype.newSeedAll = function () {
-                    for (var index2698 = 0; index2698 < this._distributions.length; index2698++) {
-                        var d = this._distributions[index2698];
+                    for (var index263 = 0; index263 < this._distributions.length; index263++) {
+                        var d = this._distributions[index263];
                         {
                             d.setSeed(this.nextSeed());
                         }
@@ -8003,8 +8003,8 @@ var desmoj;
                  * individual reset method.
                  */
                 DistributionManager.prototype.resetAll = function () {
-                    for (var index2699 = 0; index2699 < this._distributions.length; index2699++) {
-                        var d = this._distributions[index2699];
+                    for (var index264 = 0; index264 < this._distributions.length; index264++) {
+                        var d = this._distributions[index264];
                         {
                             d.resetReportable();
                         }
@@ -8018,8 +8018,8 @@ var desmoj;
                  * boolean : The new status of antithetic mode
                  */
                 DistributionManager.prototype.setAntitheticAll = function (antitheticMode) {
-                    for (var index2700 = 0; index2700 < this._distributions.length; index2700++) {
-                        var d = this._distributions[index2700];
+                    for (var index265 = 0; index265 < this._distributions.length; index265++) {
+                        var d = this._distributions[index265];
                         {
                             d.setAntithetic(antitheticMode);
                         }
@@ -9056,8 +9056,8 @@ var desmoj;
                     }
                     ;
                     this._messMan = new desmoj.core.report.MessageDistributor();
-                    for (var index2701 = 0; index2701 < debugOutputs.length; index2701++) {
-                        var debugOutputType = debugOutputs[index2701];
+                    for (var index266 = 0; index266 < debugOutputs.length; index266++) {
+                        var debugOutputType = debugOutputs[index266];
                         {
                             try {
                                 var debugOType = eval((debugOutputType != null) ? debugOutputType : Experiment.DEFAULT_DEBUG_OUTPUT_TYPE);
@@ -9075,8 +9075,8 @@ var desmoj;
                             ;
                         }
                     }
-                    for (var index2702 = 0; index2702 < reportOutputs.length; index2702++) {
-                        var reportOutputType = reportOutputs[index2702];
+                    for (var index267 = 0; index267 < reportOutputs.length; index267++) {
+                        var reportOutputType = reportOutputs[index267];
                         {
                             try {
                                 var reportOType = eval((reportOutputType != null) ? reportOutputType : Experiment.DEFAULT_REPORT_OUTPUT_TYPE);
@@ -9093,8 +9093,8 @@ var desmoj;
                             ;
                         }
                     }
-                    for (var index2703 = 0; index2703 < errorOutputs.length; index2703++) {
-                        var errorOutputType = errorOutputs[index2703];
+                    for (var index268 = 0; index268 < errorOutputs.length; index268++) {
+                        var errorOutputType = errorOutputs[index268];
                         {
                             try {
                                 var errorOType = eval((errorOutputType != null) ? errorOutputType : Experiment.DEFAULT_ERROR_OUTPUT_TYPE);
@@ -9111,8 +9111,8 @@ var desmoj;
                             ;
                         }
                     }
-                    for (var index2704 = 0; index2704 < traceOutputs.length; index2704++) {
-                        var traceOutputType = traceOutputs[index2704];
+                    for (var index269 = 0; index269 < traceOutputs.length; index269++) {
+                        var traceOutputType = traceOutputs[index269];
                         {
                             try {
                                 var traceOType = eval((traceOutputType != null) ? traceOutputType : Experiment.DEFAULT_TRACE_OUTPUT_TYPE);
@@ -9337,8 +9337,8 @@ var desmoj;
                         return;
                     }
                     if (this._traceOutput != null) {
-                        for (var index2705 = 0; index2705 < this._traceOutput.length; index2705++) {
-                            var trc = this._traceOutput[index2705];
+                        for (var index270 = 0; index270 < this._traceOutput.length; index270++) {
+                            var trc = this._traceOutput[index270];
                             {
                                 if (trc != null && (trc["__interfaces"] != null && trc["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0 || trc.constructor != null && trc.constructor["__interfaces"] != null && trc.constructor["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0)) {
                                     trc["export"](this._pathName, this.getName());
@@ -9347,8 +9347,8 @@ var desmoj;
                         }
                     }
                     if (this._debugOutput != null) {
-                        for (var index2706 = 0; index2706 < this._debugOutput.length; index2706++) {
-                            var dbg = this._debugOutput[index2706];
+                        for (var index271 = 0; index271 < this._debugOutput.length; index271++) {
+                            var dbg = this._debugOutput[index271];
                             {
                                 if (dbg != null && (dbg["__interfaces"] != null && dbg["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0 || dbg.constructor != null && dbg.constructor["__interfaces"] != null && dbg.constructor["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0)) {
                                     dbg["export"](this._pathName, this.getName());
@@ -9357,8 +9357,8 @@ var desmoj;
                         }
                     }
                     if (this._errorOutput != null) {
-                        for (var index2707 = 0; index2707 < this._errorOutput.length; index2707++) {
-                            var err = this._errorOutput[index2707];
+                        for (var index272 = 0; index272 < this._errorOutput.length; index272++) {
+                            var err = this._errorOutput[index272];
                             {
                                 if (err != null && (err["__interfaces"] != null && err["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0 || err.constructor != null && err.constructor["__interfaces"] != null && err.constructor["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0)) {
                                     err["export"](this._pathName, this.getName());
@@ -9367,8 +9367,8 @@ var desmoj;
                         }
                     }
                     if (this._reportOutput != null) {
-                        for (var index2708 = 0; index2708 < this._reportOutput.length; index2708++) {
-                            var rpt = this._reportOutput[index2708];
+                        for (var index273 = 0; index273 < this._reportOutput.length; index273++) {
+                            var rpt = this._reportOutput[index273];
                             {
                                 if (rpt != null && (rpt["__interfaces"] != null && rpt["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0 || rpt.constructor != null && rpt.constructor["__interfaces"] != null && rpt.constructor["__interfaces"].indexOf("desmoj.core.report.OutputTypeEndToExport") >= 0)) {
                                     rpt["export"](this._pathName, this.getName());
@@ -9377,12 +9377,12 @@ var desmoj;
                         }
                     }
                     this._status = Experiment.ABORTED;
-                    for (var index2709 = 0; index2709 < this._registryOutputType.length; index2709++) {
-                        var o = this._registryOutputType[index2709];
+                    for (var index274 = 0; index274 < this._registryOutputType.length; index274++) {
+                        var o = this._registryOutputType[index274];
                         o.close();
                     }
-                    for (var index2710 = 0; index2710 < this._registryFileOutput.length; index2710++) {
-                        var f = this._registryFileOutput[index2710];
+                    for (var index275 = 0; index275 < this._registryFileOutput.length; index275++) {
+                        var f = this._registryFileOutput[index275];
                         f.close();
                     }
                 };
@@ -9449,32 +9449,32 @@ var desmoj;
                 Experiment.prototype.getOutputAppendixes = function () {
                     var appendixes = ([]);
                     var debugAppendixes = ([]);
-                    for (var index2711 = 0; index2711 < this._debugOutput.length; index2711++) {
-                        var o = this._debugOutput[index2711];
+                    for (var index276 = 0; index276 < this._debugOutput.length; index276++) {
+                        var o = this._debugOutput[index276];
                         {
                             /* add */ (debugAppendixes.push(o.getAppendix()) > 0);
                         }
                     }
                     /* add */ (appendixes.push(debugAppendixes) > 0);
                     var traceAppendixes = ([]);
-                    for (var index2712 = 0; index2712 < this._debugOutput.length; index2712++) {
-                        var o = this._debugOutput[index2712];
+                    for (var index277 = 0; index277 < this._debugOutput.length; index277++) {
+                        var o = this._debugOutput[index277];
                         {
                             /* add */ (traceAppendixes.push(o.getAppendix()) > 0);
                         }
                     }
                     /* add */ (appendixes.push(traceAppendixes) > 0);
                     var errorAppendixes = ([]);
-                    for (var index2713 = 0; index2713 < this._debugOutput.length; index2713++) {
-                        var o = this._debugOutput[index2713];
+                    for (var index278 = 0; index278 < this._debugOutput.length; index278++) {
+                        var o = this._debugOutput[index278];
                         {
                             /* add */ (errorAppendixes.push(o.getAppendix()) > 0);
                         }
                     }
                     /* add */ (appendixes.push(errorAppendixes) > 0);
                     var reportAppendixes = ([]);
-                    for (var index2714 = 0; index2714 < this._debugOutput.length; index2714++) {
-                        var o = this._debugOutput[index2714];
+                    for (var index279 = 0; index279 < this._debugOutput.length; index279++) {
+                        var o = this._debugOutput[index279];
                         {
                             /* add */ (reportAppendixes.push(o.getAppendix()) > 0);
                         }
@@ -9920,8 +9920,8 @@ var desmoj;
                         return;
                     }
                     reporters = m.report();
-                    for (var index2715 = 0; index2715 < reporters.length; index2715++) {
-                        var r = reporters[index2715];
+                    for (var index280 = 0; index280 < reporters.length; index280++) {
+                        var r = reporters[index280];
                         {
                             this._messMan.receive$desmoj_core_report_Reporter(r);
                         }
@@ -10424,8 +10424,8 @@ var desmoj;
                     if (suffix == null)
                         suffix = "";
                     var nameBuffer = null;
-                    for (var index2716 = 0; index2716 < this._registryFileOutput.length; index2716++) {
-                        var f = this._registryFileOutput[index2716];
+                    for (var index281 = 0; index281 < this._registryFileOutput.length; index281++) {
+                        var f = this._registryFileOutput[index281];
                         {
                             nameBuffer = f.getFileName();
                             f.close();
@@ -10464,8 +10464,8 @@ var desmoj;
                         suffix = "";
                     this.report$desmoj_core_simulator_Model(this._client);
                     var nameBuffer = null;
-                    for (var index2717 = 0; index2717 < this._registryFileOutput.length; index2717++) {
-                        var f = this._registryFileOutput[index2717];
+                    for (var index282 = 0; index282 < this._registryFileOutput.length; index282++) {
+                        var f = this._registryFileOutput[index282];
                         {
                             nameBuffer = f.getFileName();
                             f.close();
@@ -11343,8 +11343,8 @@ var desmoj;
                         return;
                     }
                     var notes = who.getEventNotes();
-                    for (var index2718 = 0; index2718 < notes.length; index2718++) {
-                        var note = notes[index2718];
+                    for (var index283 = 0; index283 < notes.length; index283++) {
+                        var note = notes[index283];
                         {
                             this.evList.remove(note);
                             note.setTime(this.presentTime());
@@ -11366,8 +11366,8 @@ var desmoj;
                         return;
                     }
                     var notes = who.getEventNotes();
-                    for (var index2719 = 0; index2719 < notes.length; index2719++) {
-                        var note = notes[index2719];
+                    for (var index284 = 0; index284 < notes.length; index284++) {
+                        var note = notes[index284];
                         {
                             this.evList.remove(note);
                             note.setTime(desmoj.core.simulator.TimeOperations.add$desmoj_core_simulator_TimeInstant$desmoj_core_simulator_TimeSpan(this.presentTime(), dt));
@@ -11439,8 +11439,8 @@ var desmoj;
                         return;
                     }
                     var notes = (who.getEventNotes().slice(0));
-                    for (var index2720 = 0; index2720 < notes.length; index2720++) {
-                        var note = notes[index2720];
+                    for (var index285 = 0; index285 < notes.length; index285++) {
+                        var note = notes[index285];
                         {
                             this.evList.remove(note);
                             note.setTime(time);
@@ -13231,8 +13231,8 @@ var desmoj;
                      */
                     /*private*/ CanvasTimeSeries.prototype.getMaxDataValue = function () {
                         var max = 0;
-                        for (var index2721 = 0; index2721 < this._timeSeries.length; index2721++) {
-                            var timeSeriesData = this._timeSeries[index2721];
+                        for (var index286 = 0; index286 < this._timeSeries.length; index286++) {
+                            var timeSeriesData = this._timeSeries[index286];
                             {
                                 if (max < timeSeriesData.getHighestDataValue()) {
                                     max = timeSeriesData.getHighestDataValue();
@@ -13250,8 +13250,8 @@ var desmoj;
                      */
                     /*private*/ CanvasTimeSeries.prototype.getMaxTimeValue = function () {
                         var max = 0;
-                        for (var index2722 = 0; index2722 < this._timeSeries.length; index2722++) {
-                            var timeSeriesData = this._timeSeries[index2722];
+                        for (var index287 = 0; index287 < this._timeSeries.length; index287++) {
+                            var timeSeriesData = this._timeSeries[index287];
                             {
                                 if (timeSeriesData.getValidTo() > max) {
                                     max = timeSeriesData.getValidTo();
@@ -13273,8 +13273,8 @@ var desmoj;
                         }
                         else {
                             var min = Number.MAX_VALUE;
-                            for (var index2723 = 0; index2723 < this._timeSeries.length; index2723++) {
-                                var timeSeriesData = this._timeSeries[index2723];
+                            for (var index288 = 0; index288 < this._timeSeries.length; index288++) {
+                                var timeSeriesData = this._timeSeries[index288];
                                 {
                                     if (timeSeriesData.getValidFrom() < min) {
                                         min = timeSeriesData.getValidFrom();
@@ -15253,8 +15253,8 @@ var desmoj;
                     this._myExperiment = exp;
                     this._myExperiment.registerModel(this);
                     if (!(this._subModels.length == 0)) {
-                        for (var index2724 = 0; index2724 < this._subModels.length; index2724++) {
-                            var m = this._subModels[index2724];
+                        for (var index289 = 0; index289 < this._subModels.length; index289++) {
+                            var m = this._subModels[index289];
                             {
                                 m.setConnectedExperiment(exp);
                             }
@@ -15288,8 +15288,8 @@ var desmoj;
                     if (!this.hasSubModels())
                         return;
                     else {
-                        for (var index2725 = 0; index2725 < this._subModels.length; index2725++) {
-                            var m = this._subModels[index2725];
+                        for (var index290 = 0; index290 < this._subModels.length; index290++) {
+                            var m = this._subModels[index290];
                             {
                                 m.init();
                                 m.doSubmodelInit();
@@ -15307,8 +15307,8 @@ var desmoj;
                     if (!this.hasSubModels())
                         return;
                     else {
-                        for (var index2726 = 0; index2726 < this._subModels.length; index2726++) {
-                            var m = this._subModels[index2726];
+                        for (var index291 = 0; index291 < this._subModels.length; index291++) {
+                            var m = this._subModels[index291];
                             {
                                 m.doInitialSchedules();
                                 m.doSubmodelSchedules();
@@ -15344,8 +15344,8 @@ var desmoj;
                         m.entries = []; for (var i = 0; i < m.entries.length; i++)
                         r.push(m.entries[i].value); return r; })(this._entityMap));
                     if (includeSubmodels) {
-                        for (var index2727 = 0; index2727 < this._subModels.length; index2727++) {
-                            var submodel = this._subModels[index2727];
+                        for (var index292 = 0; index292 < this._subModels.length; index292++) {
+                            var submodel = this._subModels[index292];
                             {
                                 /* addAll */ (function (l1, l2) { return l1.push.apply(l1, l2); })(list, submodel.getEntities(true));
                             }
@@ -15514,20 +15514,20 @@ var desmoj;
                 Model.prototype.report = function () {
                     var repMan = new desmoj.core.report.ReportManager(this.getName() + "_ReportManager");
                     repMan.register(this.createDefaultReporter());
-                    for (var index2728 = 0; index2728 < this._reportables.length; index2728++) {
-                        var r = this._reportables[index2728];
+                    for (var index293 = 0; index293 < this._reportables.length; index293++) {
+                        var r = this._reportables[index293];
                         {
                             if (r.reportIsOn())
                                 repMan.register(r.getReporter());
                         }
                     }
                     var subReporters;
-                    for (var index2729 = 0; index2729 < this._subModels.length; index2729++) {
-                        var m = this._subModels[index2729];
+                    for (var index294 = 0; index294 < this._subModels.length; index294++) {
+                        var m = this._subModels[index294];
                         {
                             subReporters = m.report();
-                            for (var index2730 = 0; index2730 < subReporters.length; index2730++) {
-                                var r = subReporters[index2730];
+                            for (var index295 = 0; index295 < subReporters.length; index295++) {
+                                var r = subReporters[index295];
                                 {
                                     repMan.addLast(r);
                                 }
@@ -15545,8 +15545,8 @@ var desmoj;
                     if ((this._reportables.length == 0))
                         return;
                     else {
-                        for (var index2731 = 0; index2731 < this._reportables.length; index2731++) {
-                            var r = this._reportables[index2731];
+                        for (var index296 = 0; index296 < this._reportables.length; index296++) {
+                            var r = this._reportables[index296];
                             {
                                 r.resetReportable();
                             }
@@ -15555,8 +15555,8 @@ var desmoj;
                     if ((this._subModels.length == 0))
                         return;
                     else {
-                        for (var index2732 = 0; index2732 < this._subModels.length; index2732++) {
-                            var m = this._subModels[index2732];
+                        for (var index297 = 0; index297 < this._subModels.length; index297++) {
+                            var m = this._subModels[index297];
                             {
                                 m.resetReportable();
                             }
@@ -16082,8 +16082,8 @@ var desmoj;
                     var newNote = null;
                     var oldNotes = (this._schedule.slice(0));
                     var newNotes = ([]);
-                    for (var index2733 = 0; index2733 < oldNotes.length; index2733++) {
-                        var oldNote = oldNotes[index2733];
+                    for (var index298 = 0; index298 < oldNotes.length; index298++) {
+                        var oldNote = oldNotes[index298];
                         {
                             newNote = oldNote.copy(this.current());
                             newNote.setTime(desmoj.core.simulator.TimeOperations.add$desmoj_core_simulator_TimeInstant$desmoj_core_simulator_TimeSpan(oldNote.getTime(), dt));
@@ -16107,8 +16107,8 @@ var desmoj;
                             }
                         }
                     }
-                    for (var index2734 = 0; index2734 < newNotes.length; index2734++) {
-                        var ev = newNotes[index2734];
+                    for (var index299 = 0; index299 < newNotes.length; index299++) {
+                        var ev = newNotes[index299];
                         {
                             this.getModel().getExperiment().getScheduler().evList.insert(ev);
                         }
@@ -18297,8 +18297,8 @@ var demos;
                  */
                 Entity.prototype.getScheduledEvents = function () {
                     var list = ([]);
-                    for (var index2735 = 0; index2735 < this._schedule.length; index2735++) {
-                        var note = this._schedule[index2735];
+                    for (var index300 = 0; index300 < this._schedule.length; index300++) {
+                        var note = this._schedule[index300];
                         {
                             /* add */ (list.push(note.getEvent()) > 0);
                         }

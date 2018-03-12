@@ -1,4 +1,4 @@
-compiler.bundle=true
+compiler.bundle=false
 compiler.bundlesDirectory=target/bundle
 compiler.candyJsFolder=
 compiler.javascriptFolder=target/javascript
