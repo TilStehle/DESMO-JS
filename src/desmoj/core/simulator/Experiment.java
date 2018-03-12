@@ -1424,7 +1424,7 @@ public class Experiment extends NamedObject {
 		}
 
 		_status = RUNNING; // now checked to run
-		
+		doProceed();
 		/*
 		try {
 		    //main proceed code has to be executed in a strand because it can be suspended (locks)
@@ -1481,8 +1481,9 @@ public class Experiment extends NamedObject {
 		*/ //Commented out because of missing classes in fragment
 	}
 
-	/*
-    private void doProceed() throws SuspendExecution {
+	
+    private void doProceed()//[PROCESS] throws SuspendExecution {
+    {
         boolean gotEvent = false; // buffer to check if scheduler works
 
 		try {
@@ -1509,17 +1510,22 @@ public class Experiment extends NamedObject {
     					}
 				    }
 				}
-
+/*//[PROCESS]
 				// Sleep a while (modified by N. Knaak)
 				if (_status == RUNNING && _delayInMillis != 0)
 					Strand.sleep(_delayInMillis);
+					**/
 			}
 		} catch (DESMOJException e) {
 		    _messMan.receive(e.getErrorMessage());
 		    disasterRecovery(e);
-		} catch (java.lang.InterruptedException e) {
+		} 
+		/*
+		 * //[PROCESS]
+		catch (java.lang.InterruptedException e) {
 			disasterRecovery(e);
 		}
+		*/
 
 		// give warning if reason for stopping was empty EventList
 		if (gotEvent == false) {
@@ -1529,7 +1535,7 @@ public class Experiment extends NamedObject {
 					"Make sure to always have events to be scheduled i.e. by letting an "
 							+ "Entity create and schedule its successor.");
 		}
-    }*/ //[PROCESS]
+    }
 
     private void disasterRecovery(Exception e) {
         System.err.println("disaster recovery");
