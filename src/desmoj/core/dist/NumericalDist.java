@@ -75,7 +75,7 @@ public abstract class NumericalDist<N extends Number> extends Distribution {
 	    if (this.currentlySendDebugNotes())
 	           this.traceLastSample(sample+"");
 
-        System.out.println("Sample: " + sample.toString());
+        //System.out.println("Sample: " + sample.toString());
         return sample;
 	}
 	

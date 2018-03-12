@@ -1510,7 +1510,7 @@ public class Experiment extends NamedObject {
     					}
 				    }
 				}
-/*//[PROCESS]
+				/*//[PROCESS]
 				// Sleep a while (modified by N. Knaak)
 				if (_status == RUNNING && _delayInMillis != 0)
 					Strand.sleep(_delayInMillis);
