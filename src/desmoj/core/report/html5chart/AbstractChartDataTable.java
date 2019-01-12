@@ -1,6 +1,5 @@
 package desmoj.core.report.html5chart;
 
-import def.NumberValueHelper;
 import desmoj.core.simulator.Model;
 
 /**
@@ -40,8 +39,7 @@ public abstract class AbstractChartDataTable<N extends Number> implements Abstra
 	public N getHighestDataValue() {
 		N max = null;
 		for (N entry: table) {
-			//if ((max == null || entry.doubleValue() > max.doubleValue()) && entry.doubleValue() != Double.POSITIVE_INFINITY) max = entry;
-			if ((max == null || NumberValueHelper.doubleValue(entry) > NumberValueHelper.doubleValue(max)) && NumberValueHelper.doubleValue(entry) != (1d / 0d)) max = entry; //[JSWEET]
+			if ((max == null || entry.doubleValue() > max.doubleValue()) && entry.doubleValue() != Double.POSITIVE_INFINITY) max = entry;
 		}
 		
 		return max;

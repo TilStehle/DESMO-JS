@@ -1,0 +1,4 @@
+let java={
+		lang:{},
+		util:{},
+}

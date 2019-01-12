@@ -6,7 +6,6 @@ import desmoj.core.simulator.TimeInstant;
 import desmoj.core.simulator.TimeOperations;
 
 import java.text.DecimalFormat;
-import def.System;
 
 /**
  * A reporter about a simulation run, including information like

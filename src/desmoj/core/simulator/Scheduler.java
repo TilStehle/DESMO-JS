@@ -4,7 +4,6 @@ import java.util.LinkedList; //[CONCURRENT]
 import java.util.List;
 //import java.util.concurrent.LinkedBlockingQueue; //[CONCURRENT]
 import def.TimeUnit;
-import def.System; //[JSWEET]
 //import java.util.concurrent.locks.ReentrantLock; //[CONCURRENT]
 
 //import co.paralleluniverse.fibers.SuspendExecution; //[PROCESS]

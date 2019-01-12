@@ -58,8 +58,7 @@ public class FileOutput {
 	/**
 	 * The character used to indicate the end of a line.
 	 */
-    //private static String eol = System.getProperty("line.separator"); // standard OS eol
-	private static String eol = def.System.getProperty("line.separator"); // standard OS eol //[JSWEET]
+    private static String eol = System.getProperty("line.separator"); // standard OS eol
 
 	/**
 	 * The character used to separate individual entries within a line.

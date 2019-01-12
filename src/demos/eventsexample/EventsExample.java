@@ -194,7 +194,7 @@ public class EventsExample extends Model {
 		EventsExample model = new EventsExample(null, "EventsExample", true, true);
                 // null as first parameter because it is the main model and has no mastermodel
       
-                Experiment exp = new Experiment("EventExampleExperiment", TimeUnit.SECONDS, TimeUnit.MINUTES, null);
+		Experiment exp = new Experiment("EventExampleExperiment", new SingleUnitTimeFormatter(TimeUnit.MINUTES,TimeUnit.SECONDS,2, true));
                 // ATTENTION, since the name of the experiment is used in the names of the
                 // output files, you have to specify a string that's compatible with the
                 // filename constraints of your computer's operating system. The remaing three

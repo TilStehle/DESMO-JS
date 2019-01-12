@@ -1,6 +1,5 @@
 package desmoj.core.dist;
 
-import def.NumberValueHelper;
 import def.TimeUnit;
 
 import desmoj.core.simulator.Model;
@@ -55,9 +54,9 @@ public abstract class NumericalDist<N extends Number> extends Distribution {
             attempts++;
     	            
     	            
-	    } while (nonNegative && NumberValueHelper.doubleValue(sample) /*[JSWEET]*/ < 0 && attempts < 100);
+	    } while (nonNegative && sample.doubleValue() < 0 && attempts < 100);
 	    
-	    if (nonNegative && NumberValueHelper.doubleValue(sample) /*[JSWEET]*/ < 0) {
+	    if (nonNegative && sample.doubleValue() < 0) {
 	        sendWarning(
                     "NumericalDist that was set non-negative faild to sample a non-negative value." + 
 	                    "Returning a negative result.",
@@ -111,20 +110,20 @@ public abstract class NumericalDist<N extends Number> extends Distribution {
         
         // Obtain a sample 
         N sample = this.sample();
-        if (NumberValueHelper.doubleValue(sample) /*[JSWEET]*/ < 0) {
+        if (sample.doubleValue()  < 0) {
             sendWarning(
                     "Failed to sample a TimeSpan. Returning TimeSpan(0) instead.",
                     "NumericalDist: " + getName() + " Method: TimeSpan sampleTimeSpan()",
-                    "The distribution returned a negative sample (" + NumberValueHelper.doubleValue(sample) /*[JSWEET]*/ + ").",
+                    "The distribution returned a negative sample (" + sample.doubleValue() + ").",
                     "Make sure to sample TimeSpans from non-negative distributions only.");
             return new TimeSpan(0);
         }
         
         // Return a TimeSpan using the appropriate constructor
         if (sample instanceof Double || sample instanceof Float) {
-            return new TimeSpan(NumberValueHelper.doubleValue(sample) /*[JSWEET]*/);
+            return new TimeSpan(sample.doubleValue());
         } else {
-            return new TimeSpan(NumberValueHelper.longValue(sample) /*[JSWEET]*/);
+            return new TimeSpan(sample.longValue());
         }
     }
     
@@ -163,20 +162,20 @@ public abstract class NumericalDist<N extends Number> extends Distribution {
         
         // Obtain a sample 
         N sample = this.sample();
-        if (NumberValueHelper.doubleValue(sample) /*[JSWEET]*/ < 0) {
+        if (sample.doubleValue() < 0) {
             sendWarning(
                     "Failed to sample a TimeSpan. Returning TimeSpan(0) instead.",
                     "NumericalDist: " + getName() + " Method: TimeSpan sampleTimeSpan(TimeUnit unit)",
-                    "The distribution returned a negative sample (" + NumberValueHelper.doubleValue(sample) /*[JSWEET]*/ + ").",
+                    "The distribution returned a negative sample (" + sample.doubleValue() + ").",
                     "Make sure to sample TimeSpans from non-negative distributions only.");
             return new TimeSpan(0);
         }
         
         // Return a TimeSpan using the appropriate constructor
         if (sample instanceof Double || sample instanceof Float) {
-            return new TimeSpan(NumberValueHelper.doubleValue(sample) /*[JSWEET]*/, unit);
+            return new TimeSpan(sample.doubleValue(), unit);
         } else {
-            return new TimeSpan(NumberValueHelper.longValue(sample) /*[JSWEET]*/, unit);
+            return new TimeSpan(sample.longValue(), unit);
         }
     }
     

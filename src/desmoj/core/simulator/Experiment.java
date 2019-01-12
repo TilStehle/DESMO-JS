@@ -2418,7 +2418,7 @@ public class Experiment extends NamedObject {
 		_client.register(new SimulationRunReporter.SimulationRunReporterProvider(_client));
 		// now everything is set up, go on and process events
 		_status = STARTED;
-		this._realTimeStartTime = def.System.nanoTime(); //[JSWEET]
+		this._realTimeStartTime = System.nanoTime(); //[JSWEET]
 
 		proceed();
 

@@ -34,7 +34,7 @@ public class Random {
 	
 	public int nextInt() {
 		
-		return (int) random.integer(NumberValueHelper.INT_MIN_VALUE, NumberValueHelper.INT_MAX_VALUE);
+		return (int) random.integer(def.Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
 	
 	public int nextIntWithBound(int bound) {

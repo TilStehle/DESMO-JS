@@ -1,8 +1,8 @@
 package desmoj.core.simulator;
 
-//import java.util.EnumMap;
-//import java.util.Locale;
-//import java.util.Map; //[JSWEET]
+import java.util.EnumMap;
+import java.util.Locale;
+import java.util.Map; 
 import def.TimeUnit;
 
 /**
@@ -31,7 +31,7 @@ import def.TimeUnit;
  */
 public class SingleUnitTimeFormatter implements TimeFormatter {
 	
-	/*
+	
 	private static Map<TimeUnit, Map<TimeUnit, Long>> timeConstants = new EnumMap<TimeUnit, Map<TimeUnit, Long>>(
 			TimeUnit.class);
 
@@ -80,7 +80,7 @@ public class SingleUnitTimeFormatter implements TimeFormatter {
 		timeConstants.put(TimeUnit.MICROSECONDS, microConstants);
 
 	}
-	*/ //[JSWEET]
+	
 	
 	/**
 	 * The TimeUnit that is used in this TimeFormatter
@@ -188,6 +188,6 @@ public class SingleUnitTimeFormatter implements TimeFormatter {
      * @see desmoj.core.simulator.TimeFormatter#usesOnlySingleUnit()
      */
 	public String getUnit() {
-        return _myTimeUnit.toString().toLowerCase(/*Locale.ENGLISH //[JSWEET]*/);
+        return _myTimeUnit.toString().toLowerCase(Locale.ENGLISH );
     }
 }

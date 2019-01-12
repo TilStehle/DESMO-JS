@@ -1,6 +1,5 @@
 package desmoj.core.simulator;
 
-import def.System; //[JSWEET]
 
 /**
  * Provides the basic frame for user defined events. Derive from this class to
