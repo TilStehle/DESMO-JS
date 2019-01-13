@@ -1,11 +1,8 @@
 package desmoj.core.simulator;
 
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList; //[JSWEET]
 import java.util.HashMap;
-//import java.util.LinkedList; //[JSWEET]
-import desmoj.core.simulator.Entity;
-import desmoj.core.simulator.QueueBased;
+import java.util.LinkedList;
+import java.util.WeakHashMap;
 
 /**
  * Is the class summing up all the collective implementation of different
@@ -48,8 +45,7 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> /
 	/**
 	 * Uses the java.util.LinkedList for implementation
 	 */
-	//protected java.util.LinkedList<E> queuelist;
-	protected java.util.ArrayList<E> queuelist; //[JSWEET]
+	protected java.util.List<E> queuelist;
 	
 
 	/**
@@ -67,11 +63,9 @@ public abstract class QueueListStandard<E extends Entity> extends QueueList<E> /
 		super();
 		
 		//the here used java.LinkedList
-		//queuelist = new LinkedList<E>();
-		queuelist = new ArrayList<E>(); //[JSWEET]
+		queuelist = new LinkedList<E>();
 		
-		//the here used java.WeakHashMap
-		timemap = new HashMap<E,TimeInstant>();
+		timemap = new WeakHashMap<E,TimeInstant>();
 
 	}
 	

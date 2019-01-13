@@ -1,4 +1,0 @@
-let java={
-		lang:{},
-		util:{},
-}

@@ -20,6 +20,12 @@
   </repositories>
   
    <dependencies>
+   <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+<dependency>
+    <groupId>commons-collections</groupId>
+    <artifactId>commons-collections</artifactId>
+    <version>3.2.1</version>
+</dependency>
    
     <!-- JSweet core API -->
     <dependency>

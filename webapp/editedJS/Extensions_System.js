@@ -1,4 +1,4 @@
-java.lang.System ={
+System ={
  nanoTime: function() {
     var date = new Date();
     return Math.floor(date.getMilliseconds()) * 1000000;
