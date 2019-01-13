@@ -20,7 +20,14 @@ var def;
         MersenneTwisterRandomGeneratorJS.prototype.setSeed = function (seed) {
             var s = (Random.engines.mt19937);
             var mt19937 = (function (target) { return (typeof target === 'function') ? target() : target.get(); })(s);
-            mt19937.seed(42);
+            if(seed)
+            	{
+            	mt19937.seed(seed);
+            	}
+            else
+            	{
+            	mt19937.seed(42);
+            	}
             this.random = new Random(mt19937);
         };
         return MersenneTwisterRandomGeneratorJS;
